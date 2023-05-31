@@ -1,0 +1,360 @@
+<!DOCTYPE html><html lang="cn" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>OSLab2随笔 | 下午六点的茶会</title><meta name="author" content="Mad Hatter"><meta name="copyright" content="Mad Hatter"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="​		做完Lab2，其实感觉还是很有成就感的，但这“火箭”造的说实话不是很友好。好消息是，某位助教的ppt里面的一个参考来源有相当有价值的内容和代码：FAT12文件系统详解（CSDN），能给我们不少帮助——当然，核心部分还是得我们自己写。 ​		我是个懒人，而且自认代码写的不咋地，这篇帖子里面大段源码是没有的（那个CSDN的已经很有用了，那部分得自己想，说出来就没意思了）。一些坑我可能也不会都写下">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OSLab2随笔">
+<meta property="og:url" content="https://miceforrat.github.io/blogOfNoob.github.io/teawith/35904.html">
+<meta property="og:site_name" content="下午六点的茶会">
+<meta property="og:description" content="​		做完Lab2，其实感觉还是很有成就感的，但这“火箭”造的说实话不是很友好。好消息是，某位助教的ppt里面的一个参考来源有相当有价值的内容和代码：FAT12文件系统详解（CSDN），能给我们不少帮助——当然，核心部分还是得我们自己写。 ​		我是个懒人，而且自认代码写的不咋地，这篇帖子里面大段源码是没有的（那个CSDN的已经很有用了，那部分得自己想，说出来就没意思了）。一些坑我可能也不会都写下">
+<meta property="og:locale">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2023-04-02T16:51:17.000Z">
+<meta property="article:modified_time" content="2023-04-27T12:31:55.438Z">
+<meta property="article:author" content="Mad Hatter">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/blogOfNoob.github.io/img/favicon.png"><link rel="canonical" href="https://miceforrat.github.io/blogOfNoob.github.io/teawith/35904.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/blogOfNoob.github.io/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/blogOfNoob.github.io/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'OSLab2随笔',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-04-27 20:31:55'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/blogOfNoob.github.io/atom.xml" title="下午六点的茶会" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/blogOfNoob.github.io/archives/"><div class="headline">Articles</div><div class="length-num">8</div></a><a href="/blogOfNoob.github.io/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/blogOfNoob.github.io/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/blogOfNoob.github.io/img/path.png')"><nav id="nav"><span id="blog-info"><a href="/blogOfNoob.github.io/" title="下午六点的茶会"><span class="site-name">下午六点的茶会</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">OSLab2随笔</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2023-04-02T16:51:17.000Z" title="Created 2023-04-03 00:51:17">2023-04-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2023-04-27T12:31:55.438Z" title="Updated 2023-04-27 20:31:55">2023-04-27</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="OSLab2随笔"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>​		做完Lab2，其实感觉还是很有成就感的，但这“火箭”造的说实话不是很友好。好消息是，某位助教的ppt里面的一个参考来源有相当有价值的内容和代码：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39654127/article/details/88429461">FAT12文件系统详解（CSDN）</a>，能给我们不少帮助——当然，核心部分还是得我们自己写。</p>
+<p>​		我是个懒人，而且自认代码写的不咋地，这篇帖子里面大段源码是没有的（那个CSDN的已经很有用了，那部分得自己想，说出来就没意思了）。一些坑我可能也不会都写下来——多数大概还是会以谜语人的形式出现（除了明面上的谜语以外，也请注意任何加粗的字），可能ddl之前几天我会重新回来改写这些谜语——不过也有可能不会，纯看心情和事多不多——现在软工二的任务感觉也麻烦起来了。</p>
+<p>​		那么，让我们开始这次的胡言乱语吧！</p>
+<p>​		4.11日更新：一个有一点用，但用处不多的reference：<a target="_blank" rel="noopener" href="https://cs.nyu.edu/~gottlieb/courses/os202/kholodov-fat.html#F01_0270_deleting">The FAT File System (nyu.edu)</a>。</p>
+<p>​		4.15日问答更新：备注：<strong>最后两题</strong>不确定。</p>
+<p>​		<a href="#chapter1">1. 似曾相识燕归来</a></p>
+<p>​		<a href="#chapter1.1">1.1 文件读取</a></p>
+<p>​		<a href="#chapter1.2">1.2 pragma</a></p>
+<p>​		<a href="#chapter1.3">1.3 读取FAT12表</a></p>
+<p>​		<a href="#chapter2">2. “打开”目录项</a></p>
+<p>​		<a href="#chapter2.1">2.1 数据区的文件夹</a></p>
+<p>​		<a href="#chapter2.2">2.2 LFN项的产生</a></p>
+<p>​		<a href="#chapter2.3">2.3 目录项动态变化简析</a></p>
+<p>​		<a href="#chapter3">3. 最后几块砖</a></p>
+<p>​		<a href="#chapter3.1">3.1 早已完成的cat</a></p>
+<p>​		<a href="#chapter3.2">3.2 ls命令与-l选项</a></p>
+<p>​		<a href="#chapter3.3">3.3 函数传参与联合编译</a></p>
+<p>​		<a href="#chapter4">4 Lab2问答</a></p>
+<p>​		<a href="#chapter4.1">4.1 实模式与保护模式</a></p>
+<p>​		<a href="#chapter4.2">4.2 选择子</a></p>
+<p>​		<a href="#chapter4.3">4.3 描述符</a></p>
+<p>​		<a href="#chapter4.4">4.4 GDT与LDT</a></p>
+<p>​		<a href="#chapter4.5">4.5 GDTR与LDTR</a></p>
+<p>​		<a href="#chapter4.6">4.6 GDT查找物理地址</a></p>
+<p>​		<a href="#chapter4.7">4.7 LDT查找物理地址</a></p>
+<p>​		<a href="#chapter4.8">4.8 根目录区相关问答</a></p>
+<p>​		<a href="#chapter4.9">4.9 数据区的第一个簇号</a></p>
+<p>​		<a href="#chapter4.10">4.10 FAT表的作用</a></p>
+<p>​		<a href="#chapter4.11">4.11 静态链接的过程</a></p>
+<p>​		<a href="#chapter4.12">4.12 动态链接的过程</a></p>
+<p>​		<a href="#chapter4.13">4.13 ld vs gcc</a></p>
+<p>​		<a href="#chapter4.14">4.14 Linux下可执行文件的虚拟地址空间</a></p>
+<h1 id="似曾相识燕归来"><a href="#似曾相识燕归来" class="headerlink" title="似曾相识燕归来"></a><a id="chapter1">似曾相识燕归来</a></h1><p>​		在讨论FAT12文件系统的相关细节之前，我们有一些可以马上做的事情——比如对输入做一部分解析，至少我们应该可以鉴别出三种命令（其中ls有一个可选项）。在这一步，我们甚至并不需要去解析地址，只需要注意甄别各种对的错的-l就行了。输入的处理我就不多写了，这一部分实在是平淡无味。</p>
+<p>​		完成这一步的处理后，在进一步规划具体实现前，我们不妨先看看参考资料：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39654127/article/details/88429461">FAT12文件系统详解（CSDN）</a>。当看到目录时，似乎突然眼前一黑：<img src="/blogOfNoob.github.io/teawith/35904/%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%E7%9B%AE%E5%BD%95.jpg" class="" title="参考资料目录"></p>
+<p>​		这不就是我们Lab1做过的事情之一吗？</p>
+<p>​		确实如此，事实上，回顾一下，我们Lab1也做了很多可以直接用到Lab2的工作，比如说，Lab1为了寻找LOADER，我们编(c)写(v)了读取根目录区并比对文件或文件夹名称的代码。为了读取LOADER，我们也有配合FAT12表项读取软盘相应内容的代码——甚至支持读取超过512字节的内容。看上去，直接用汇编继续写Lab2似乎也没那么难——只要我们能解决文件读取以及读取数据区的目录项的技术问题——实际上严格来说比较全新的也就是文件读取了。然而，这个不在本篇帖子的讨论范围之内，有想卷分的大佬可以去做。</p>
+<h3 id="文件读取"><a href="#文件读取" class="headerlink" title="文件读取"></a><a id="chapter1.1">文件读取</a></h3><p>​		这个引用的CSDN帖子中的文件读取用到了QFile这个类，不过我们没有必要这么麻烦。c++自带一个fstream类用于处理文件流，当然了，这个类并没有readRawData这个函数，不过有一个功能类似的，此外还有一个和seek功能相似的函数：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ifstream in;</span><br><span class="line">in.<span class="built_in">seekg</span>(<span class="number">3</span>);</span><br><span class="line">in.<span class="built_in">read</span>(<span class="built_in">reinterpret_cast</span>&lt;<span class="type">char</span> *&gt;(myPointer), <span class="built_in">sizeof</span>(myPtr));</span><br></pre></td></tr></table></figure>
+
+<p>​		值得一提的是，文章中这个方法到fstream里面换了个函数依然能用，通过将原来的指针重新映射为char*类型的，配合read函数，从而可以无脑地接受以字节流形式传入的数据。</p>
+<h3 id="pragma"><a href="#pragma" class="headerlink" title="pragma"></a><a id="chapter1.2">pragma</a></h3><p>​		当然，如果你搬东西的时候漏了一些代码，可能试着打印相关内容的时候会“惊喜”地发现一些值和预期的值并不一样，那么可以多打印几个值，看看用于存放boot数据区或者entry目录项的结构体中某些变量是不是存放了本来不应该属于他们的值——比如后面几个变量的值，甚至更不幸地，是两个变量各出了一部分应得的值。是的，警惕编译时的对齐操作——不过我们当然也有方法对抗默认的对齐，比如说:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">pragma</span> pack(push)</span></span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> pack(1)</span></span><br><span class="line"><span class="comment">//our struct</span></span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> pack(pop)</span></span><br></pre></td></tr></table></figure>
+
+<p>​		<strong>#pragma</strong>可以用来指示编译器完成一些特定的动作，而pack就是和内存对齐相关的。push和pop有点类似于栈操作中的意思，到push时，之前的状态将被保存，到pop时，原先的状态再“弹出”，即恢复到原来的对齐状态。通过将默认对齐设为1，我们可以保证结构体中的变量到了二进制文件中时，也是“一个挨一个”的，这样我们以字节流的方式读入数据时，就能保证他们被放到自己应该被放到的位置上去。</p>
+<h3 id="读取FAT12表"><a href="#读取FAT12表" class="headerlink" title="读取FAT12表"></a><a id="chapter1.3">读取FAT12表</a></h3><p>​		事实上，我们现在还不急着继续去考虑一些复杂的东西——比如整个FAT12文件系统是怎么组织的——这可能得等我们写到更具体的实现的时候再去考虑，即使是这个链接也没有直观地给出所有内容，我打算后面手绘一张图来更具体地表示。在此之前，我们可以继续做好准备工作——比如先把FAT12表存下来，用16位的unsigned short即可，具体的计算公式和读取方法那个<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39654127/article/details/88429461">参考资料</a>也给了，需要用到位运算，我这放张图就行了：</p>
+<img src="/blogOfNoob.github.io/teawith/35904/%E4%BB%8E%E5%AD%97%E8%8A%82%E6%B5%81%E5%88%B0FAT12.jpg" class="">
+
+
+
+<h1 id="“打开”目录项"><a href="#“打开”目录项" class="headerlink" title="“打开”目录项"></a><a id="chapter2">“打开”目录项</a></h1><p>​		到此为止，我们已经完成了指令的初步解析、书写了读取BPB（<strong>BIOS Parameter Block</strong>）（BPB也可以<strong>硬编码</strong>，不过建议手动读一下）和目录项的函数，以及在全局存储了一张FAT12表（如果还没做这些事情请翻上去再看看），是时候进一步地接触FAT12文件系统了。</p>
+<p>​		接下来我们要做的，首先是定位到需要我们执行相关操作的文件或是文件夹，这都涉及到对目录项的处理。</p>
+<h3 id="数据区的文件夹"><a href="#数据区的文件夹" class="headerlink" title="数据区的文件夹"></a><a id="chapter2.1">数据区的文件夹</a></h3><p>​		很明显我们要处理的不仅仅是在根目录区的文件或者文件夹，那在数据区的文件夹又会怎么样呢？</p>
+<p>​		为了方便说明，我直接上渣手绘：</p>
+<img src="/blogOfNoob.github.io/teawith/35904/%E6%B8%A3%E7%BB%98.jpg" class="" title="渣手绘勿喷">
+
+<p>注：为了方便讲述，这里默认一个簇里面就只有一个扇区。		</p>
+<p>​		FAT12文件系统的前两个簇是固定簇，而实际表示数据的簇号——或者更确切的说，是FAT12表项的序号从2开始，实际表示数据的“簇”仍然是从0开始。对于一个表示文件的目录项——比如图中的FILE.TXT，其目录项中的第26到27个字节——也就是存储第一个FAT12表项序号低16位的那两个字节，指向的自然是该文件数据的起始簇。如果我们读完了一个簇的内容还没有读到终止，我们就根据这个簇号去查FAT12表，发现其值为0x037，那么我们要把这个值减去2，然后去找对应的簇继续读里面的数据。</p>
+<p>​		对于文件夹，它的数据区存放的是其下的目录项。比如假设一个文件夹名叫DIR2，其下面有文件夹DIR22、DIR23、DIR24和文件1.XML, 2.ASM, 3.cpp，那么这个文件夹数据区存放的就是这些文件和文件夹的<strong>相关目录项</strong>（当然由于这次不考虑LFN项，所以自己造的a.img里面可以不出现比如名字叫3.cpp的文件）——当然，还有本身(“.”)和父文件夹(“..”)的目录项，但是这两个目录项<strong>仅限数据区存在</strong>。</p>
+<p>​		实际上，虽然一个文件夹下可能没有几个目录，但是如果我们在Linux系统下对一个文件夹用ls -l命令查看其中某个空文件夹的大小，则依然可以看到：</p>
+<img src="/blogOfNoob.github.io/teawith/35904/%E5%B1%95%E7%A4%BA%E6%96%87%E4%BB%B6%E5%A4%B9%E7%9A%84%E5%A4%A7%E5%B0%8F.jpg" class="" title="文件夹的大小">
+
+<p>​		不难发现，这个toMount文件夹有4096B，尽管它下面其实什么都没有。之所以这样巨大，还是考虑到和内存以及Cache的协作，一次移动一个块。</p>
+<p>​		因此，比实现CAT还要早的，我们在解析地址这一步就需要关照到<strong>超过512字节的数据的读取</strong>。然而，这也<strong>仅限于数据区</strong>——因为根目录区没这么麻烦，它是连续的。</p>
+<p>​		我们当然可以把根目录区和数据区的目录项的遍历分开，不过在取出目录项和<strong>通过目录项的部分属性进行甄别</strong>的过程上，这二者又别无二致。话又说回来，<strong>难道根目录区和数据区的目录项的遍历只能完全分开吗？</strong></p>
+<h3 id="LFN项的产生"><a href="#LFN项的产生" class="headerlink" title="LFN项的产生"></a><a id="chapter2.2">LFN项的产生</a></h3><p>​		接下来讨论一点一般性的结论，来看看什么情况下会产生前导LFN（<em>long file name</em>）项吧，有了这个结论，我们可以在解析地址时进行一些节省时间的判断——当然，不去考察问题也不大。</p>
+<p>​		对于一般性的目录项的文件名部分，ppt上是这么描述的：</p>
+<p>​		<em>8.3 file name. The first 8 characters are the name and the last 3 are the extension.</em></p>
+<p>​		这实际上已经指明了一种产生前导LFN项的条件——文件名长度超限。假如一个文件的<em>name</em>部分超过了8个字符，或者扩展名<em>extension</em>部分超过了三个字符，以文件名”123456789.HTML”为例，为了装下它的文件名，我们需要额外的LFN项。比较自由的是，文件夹名也是可以带点的，而且带点的时候同样遵循这一类文件名的限制长度原则。</p>
+<p>​		然而，事情并没有这么简单，文件夹名和文件名是可以不带点的，在这种情况下，我们并不能因为不加点就可以将拓展名的三个字符挪用过来，换句话说，不加点的情况下，<strong>文件或者文件夹名长度仍然不能超过8</strong>，否则就会产生LFN项。</p>
+<p>​		除了简单的超出限长，还有一些其他的可能导致出现LFN项的情况，不过测试数据里应该不会出现这些。比如说，由于一般的目录项的文件名中出现的英文都是大写的，所以不难想到，如果文件名中带有小写英文字母，也需要前导LFN项来加以描述。再比如，LFN项中的文件名是两个字节两个字节地存储的——这应该是用来应对一些有双字节的“字”的语言的。</p>
+<p>​		接下来讨论两个相对而言比较难绷的情况。</p>
+<p>​		如果文件名带点，但是文件名或者拓展名没有内容会发生什么？</p>
+<p>​		简单点的是没有拓展名的，那么这个点会被无视，而且不管有多少个点，都这样。</p>
+<p>​		麻烦一点的是没文件名的，这个点会被视作文件的一部分，而且，扩展名也不复存在，变为一部分的文件名，相应的，要有LFN项存储这个文件名。</p>
+<h3 id="目录项动态变化简析"><a href="#目录项动态变化简析" class="headerlink" title="目录项动态变化简析"></a><a id="chapter2.3">目录项动态变化简析</a></h3><p>​		到这里——或者极端一点，到2.1为止，我们就已经完成了一个大体正确的地址解析了。不过，进入下一步之前，我们还得讨论一下当我们对文件执行某些操作时，对应的目录项会发生什么变化。</p>
+<p>​		按道理来说应该从文件的增加讲起，但是这样我们无法避开文件的删除对目录项的影响，所以先从删除开始。当我们删除一个文件时，其所关联的目录项——自然也包括LFN项，并不会被直接删除，而是将第一个字节设为<strong>某个定值</strong>。从而我们可以知道这个目录项指向的内容已经被删除。</p>
+<p>​		接下来自然是文件的增加。正如我们上面所说，文件删除时并没有直接删除目录项而是用做了标记取代，所以我们得考虑一个“千疮百孔”的文件夹，在这其中，我们创建了很多文件或是文件夹，又删去了一部分不一定连续的文件或者文件夹，这样，摆在我们面前的就是一个<strong>可分配空间</strong>（也包括之前被删除的文件或文件夹的目录项所占据的空间）零散的文件夹。当我们创建文件时，就会寻找到连续的、能够容纳下所有相关联目录项的空间——这也就是说，包括了可能存在的LFN项，然后在这些空间上建立新的目录项。</p>
+<p>​		最后是文件或文件夹名的修改。在进行修改时，会先寻找可分配空间生成新的对应目录项，然后删除原先的文件名对应的一个或多个目录项。</p>
+<p>​		实际上，我们在这一小节讲述的<strong>绝大多数内容对这次实验是没有用的</strong>——因为这次实验并不涉及到LFN项的处理。即使会有影响的那一小部分，在我们后续的实现与测试中也可以自行发现。放在这里，主要是能帮我们在自己的映像中设计一些较有针对性的用例。</p>
+<h1 id="最后几块砖"><a href="#最后几块砖" class="headerlink" title="最后几块砖"></a><a id="chapter3">最后几块砖</a></h1><p>​		在第2大节过后，我们已经完成了地址解析，同时手上可能还有一些有用的工具——比如取出某一文件夹下所有<strong>有效数据项</strong>，以及支持<strong>数据区超过512字节的数据的读取</strong>，那么，只需要进行一些额外的处理，就可以完成我们剩下的工作了！</p>
+<h3 id="早已完成的cat"><a href="#早已完成的cat" class="headerlink" title="早已完成的cat"></a><a id="chapter3.1">早已完成的cat</a></h3><p>​		实际上，我们很早就完成了<strong>cat</strong>的重要功能——我们支持了超过512字节数据的读取，在这里只要做一些其他的处理就行了。</p>
+<p>​		一个重要的工作是预处理——我们拿到的地址必须是一个文件。</p>
+<p>​		另外的工作就是读取映像文件中这个文件所在位置的数据并不断输出了，这个应该也不难做。</p>
+<h3 id="ls命令和-l选项"><a href="#ls命令和-l选项" class="headerlink" title="ls命令和-l选项"></a><a id="chapter3.2">ls命令和-l选项</a></h3><p>​		实际上这里做的就是树的遍历——而且实验要求中不要求输出的子文件和目录的顺序，所以广度优先和深度优先都是可以的。</p>
+<p>​		直接子目录不统计”.”与”..”，如果用广度优先，这也意味着我们不用把这两个目录放进队列。</p>
+<p>​		ls相对较为容易，而-l选项则稍微麻烦一点，主要是子目录中的直接子文件和直接子目录的数量是我们实际遍历完子目录的数据区域才能统计出来的，这也就是说，我们在高层次的打印需要涉及到更深层次的文件和目录信息。我们可以碰到需要打印相关数据的时候直接下去走一遭，然而实际操作中这样涉及到多次软盘的读写，时间上未必占便宜（当然自个编程就不考虑这些了）。</p>
+<p>​		另外，整个文件系统其实呈现出的是一个以根目录为树根的树的形状，只不过并没有显式地给出罢了。或许我们可以考虑用某种方法，用<strong>空间换取时间</strong>？</p>
+<p>​		在这里还有一些细枝末节的内容，就是红色该怎么打印？</p>
+<p>​		助教给的要求中其实写明白了，就是用<strong>\033</strong>（等价的还有<strong>\e</strong>与<strong>\x1b</strong>）。这个字符表示的是esc字符，之后我们再加上’[‘字符，后面跟上颜色相关的代码即可进行<strong>永久性的</strong>颜色切换，具体的内容也不难查询。</p>
+<h3 id="函数传参与联合编译"><a href="#函数传参与联合编译" class="headerlink" title="函数传参与联合编译"></a><a id="chapter3.3">函数传参与联合编译</a></h3><p>​		在此之前，我们的输出默认都是用高级语言中的相关输出函数书写的，在这里，我们需要按照实验的要求把它们替换为汇编的输出方式。</p>
+<p>​		所以，我们需要先解决一个问题，那就是从高级语言到32位汇编是怎么传参的。以c++为例，到32位汇编的传参是直接把所有参数压栈的。到汇编语言这里需要取出压栈的参数时，就通过栈指针寄存器（esp）中存储的数值加上几个值拿到参数的位置，进而取出其中的参数。至于<strong>参数压栈的顺序</strong>？可以自行尝试一下。</p>
+<p>​		如果我们是32位汇编，那么我们需要额外安装32位库：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install gcc-multilib</span><br><span class="line">sudo apt-get install g++-multilib</span><br><span class="line">gcc -m32 main.c func.o</span><br><span class="line">g++ -m32 main.c func.o</span><br></pre></td></tr></table></figure>
+
+<p>​		对于c++的项目，采用gcc编译链接时，<strong>不会自动链接标准STL库</strong>，或者我们可以加上<strong>-lstdc++</strong>这个参数，但这也不完全等同于g++编译。采用g++编译链接时，会自动链接标准STL库，但是需要对来自汇编的函数做一些额外的处理，否则可能找不到来自汇编的函数（这来源于c++带参数的重载造成的函数名变化）：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">extern</span> <span class="string">&quot;C&quot;</span>&#123;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">fromAsm</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *, <span class="type">int</span>)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​		至此，整个项目应该已经大差不差了。不过说到底，这也就是我的一些胡言乱语，可能还遗漏了不少东西，有待进一步地验证。</p>
+<h1 id="Lab2问答"><a href="#Lab2问答" class="headerlink" title="Lab2问答"></a><a id="chapter4">Lab2问答</a></h1><p>备注：实验相关内容的问答我就不放了。</p>
+<h3 id="实模式与保护模式"><a href="#实模式与保护模式" class="headerlink" title="实模式与保护模式"></a><a id="chapter4.1">实模式与保护模式</a></h3><p>问题：什么是实模式，什么是保护模式？</p>
+<p>答：实模式是通过<strong>基址+偏移量</strong>可以直接得到地址的模式，其得到的是真实的物理地址，缺点是比较不安全。</p>
+<p>保护模式则不能直接拿到物理地址，而是需要通过选择子从GDT或者LDT拿到段基址再结合偏移量，是从<strong>80286</strong>开始现代操作系统的主要模式。</p>
+<h3 id="选择子"><a href="#选择子" class="headerlink" title="选择子"></a><a id="chapter4.2">选择子</a></h3><p>问题：什么是选择子？</p>
+<p>答：选择子共16位，和段描述符的查找以及段的请求特权相关，放在16位的段选择寄存器中。</p>
+<p>其低2位（<strong>RPL</strong>）表示请求特权级（进程对段的访问权限）。</p>
+<p>第‘2’位表示选择<strong>GDT（全局描述符表）</strong>还是<strong>LDT（局部描述符表）</strong>方式查找段描述符。</p>
+<p>高13位表示其索引的段描述符在相应描述符表中的偏移。</p>
+<h3 id="描述符"><a href="#描述符" class="headerlink" title="描述符"></a><a id="chapter4.3">描述符</a></h3><p>问题：什么是描述符？</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/389448141#">全局描述符表 - 知乎 </a>；以及上学期tfgg的最后一份文档。</p>
+<p>为了方便讲述，先把PPT上的图片搬运过来：</p>
+<img src="/blogOfNoob.github.io/teawith/35904/%E6%AE%B5%E6%8F%8F%E8%BF%B0%E7%AC%A6.jpg" class="" title="段描述符">
+
+<p>对其中的属性分别讲述：</p>
+<p>段基址：这玩意应该不需要说了。</p>
+<p>段界限：共20位，定义了偏移量的最值。如果是<strong>数据段</strong>，就是最大能增加多少偏移量，如果是<strong>堆栈段</strong>，就是最多能减少多少偏移量，这个可以用来判断越界。</p>
+<p>P：用来表示段描述符是否有效，1为有效。</p>
+<p>G（<strong>Granularity：粒度</strong>）：这一项用来描述<strong>段界限</strong>的单位，如果是0，表示单位为字节，如果为1，意思是单位为4KB。</p>
+<p>S：当S为0，表示系统段描述符；S&#x3D;1，说明是代码段或数据段的描述符。</p>
+<p>TYPE：<strong>受S影响</strong>，建议直接看参考内容。</p>
+<p>D&#x2F;B：分几类情况：</p>
+<p>​			对于代码段，如果这一位置<strong>0</strong>，表示采用<strong>16位寻址方式</strong>，如果这一位置为1，表示采用<strong>32位寻址方式</strong>；</p>
+<p>​			对于堆栈段，如果这一位置0，表示<strong>使用16位sp寄存器</strong>，如果置1，表示使用<strong>32位esp寄存器</strong>；</p>
+<p>​			此外，对于<strong>向下扩展的数据段</strong>，如果这一位置0，表示<strong>最多向下扩展64KB</strong>；如果这一位置1，表示<strong>最多向下扩展4GB</strong>；</p>
+<p>DPL（<strong>Descriptor Privilege Level</strong>）：表示<strong>访问该段所需要的特权级别</strong>。</p>
+<p>AVL：这一位<strong>会被硬件忽略</strong>，似乎没啥用。</p>
+<h3 id="GDT与LDT"><a href="#GDT与LDT" class="headerlink" title="GDT与LDT"></a><a id="chapter4.4">GDT与LDT</a></h3><p>问题：什么是GDT，什么是LDT?</p>
+<p>答：GDT是<strong>全局描述符表</strong>（全局唯一），存放了公用描述符（例如<strong>系统段描述符</strong>）和<strong>包含各进程局部描述符表（LDT）的首地址的描述符</strong>。</p>
+<p>LDT是<strong>局部描述符表</strong>，各个进程都可以有一个自己的LDT，它存放的是该<strong>进程内</strong>使用的描述符。</p>
+<h3 id="GDTR与LDTR"><a href="#GDTR与LDTR" class="headerlink" title="GDTR与LDTR"></a><a id="chapter4.5">GDTR与LDTR</a></h3><p>问题：请分别说明GDTR和LDTR的结构。</p>
+<p>答：GDTR高32位放GDT首地址，低16位放GDT限长（这个寄存器里<strong>相当于存储了全局描述符表的基本信息</strong>）；LDTR共16位，存放一个特殊的选择子，用其查找<strong>当前进程对应的LDT的首地址</strong>（以及其他相关信息，这里PPT上说的不大准确，具体在<a href="#chapter4.7">LDT查找物理地址</a>中可以看到）。</p>
+<h3 id="GDT查找物理地址"><a href="#GDT查找物理地址" class="headerlink" title="GDT查找物理地址"></a><a id="chapter4.6">GDT查找物理地址</a></h3><p>问题：请说明GDT直接查找物理地址的具体步骤。</p>
+<p>（PPT上这张图蛮好，我直接拿过来了）<img src="/blogOfNoob.github.io/teawith/35904/GDT%E6%9F%A5%E6%89%BE%E7%89%A9%E7%90%86%E5%9C%B0%E5%9D%80.jpg" class="" title="GDT查找物理地址"></p>
+<p>答：（段选择子放在<strong>段选择寄存器</strong>中，偏移量在<strong>变址寄存器</strong>中）首先，如果我们从段选择寄存器中拿到的选择子中的第‘2’位为0，表示<strong>用GDT方式查找段描述符</strong>。</p>
+<p>​		然后我们从GDTR中取出基址和限长，在判断没有超限后，通过基址加上段选择子的高13位（用作偏移）得到地址，进而获得GDT中的段描述符。</p>
+<p>​		在确认合法（不超过限长）且有权限后，用<strong>段描述符中的段基址</strong>加上相关变址寄存器中的<strong>偏移量</strong>，得到物理地址。</p>
+<h3 id="LDT查找物理地址"><a href="#LDT查找物理地址" class="headerlink" title="LDT查找物理地址"></a><a id="chapter4.7">LDT查找物理地址</a></h3><p>问题：请说明通过LDT查找物理地址的具体步骤。</p>
+<p>（PPT上这张图也蛮好，我又直接拿过来了）</p>
+<img src="/blogOfNoob.github.io/teawith/35904/LDT%E6%9F%A5%E8%AF%A2%E7%89%A9%E7%90%86%E5%9C%B0%E5%9D%80.jpg" class="" title="LDT查找物理地址">
+
+<p>答：首先我们从段选择寄存器中拿到段选择子，然后检查它的第‘2’位，如果是1，说明使用LDT查找物理地址。</p>
+<p>​		那么接下来我们取出GDTR中的基址和限长，判断未超限后，用GDTR中GDT的基址，配合<strong>LDTR中选择子的高13位</strong>获得一个地址，拿到当前进程的LDT的段描述符，<strong>LDT的首地址即段描述符中的基址</strong>，限长即段描述符中的段界限。</p>
+<p>​		然后我们在判断不超出LDT的限长后，用LDT的首地址加上<strong>段选择寄存器中存放的段选择子的高13位</strong>拿到相应的段描述符。</p>
+<p>​		在判断合法（不超过段限长）且有权限后，用<strong>从LDT中得到的段描述符</strong>的段基址加上偏移量（可能存储在变址寄存器中）得到对应的物理地址。</p>
+<h3 id="根目录区相关问答"><a href="#根目录区相关问答" class="headerlink" title="根目录区相关问答"></a><a id="chapter4.8">根目录区相关问答</a></h3><p>问题：根目录区大小一定么？扇区号是多少？为什么？</p>
+<p>答：根目录区的大小并不一定，这取决于BPB(<strong>BIOS Parameter Block</strong>)中的第17至18个字节（从0开始），这2个字节表示了根目录区目录项数目的最大值，用这个值乘以目录项的大小（32B）即得到根目录区的大小。根目录区的开始扇区号为19，因为根目录区在引导扇区和FAT之后，也就是说在根目录区之前有引导扇区数（为1）+ FAT的数目（一般为2）* FAT的大小（单位为扇区，一般为9）&#x3D; 19，所以根目录区的起始扇区号是19。</p>
+<h3 id="数据区的第一个簇号"><a href="#数据区的第一个簇号" class="headerlink" title="数据区的第一个簇号"></a><a id="chapter4.9">数据区的第一个簇号</a></h3><p>问题：数据区第一个簇号是多少？为什么？</p>
+<p>答：数据区的第一个簇号是2，这是因为FAT12文件系统中，FAT表的起始三个字节（也就是开头两个表项）为定值0xf0、0xff与0xff（也即开头两个表项为<strong>0xff0与0xfff</strong>）。</p>
+<h3 id="FAT表的作用"><a href="#FAT表的作用" class="headerlink" title="FAT表的作用"></a><a id="chapter4.10">FAT表的作用</a></h3><p>问题：FAT（<strong>File Allocation Table</strong>）表的作用？</p>
+<p>答：FAT表的作用是告知操作系统文件存储在磁盘的什么位置。除了第0和第1个表项以外，其他表项中的值的含义是：若值小于0xff7，则表示这个表项对应的簇的存储数据的<strong>下一个簇号</strong>。若值等于0xff7，则表示这个表项对应的簇是<strong>坏簇</strong>，若大于0xff7，则表示这个表项对应的簇已经是所求文件或目录的<strong>最后一个簇</strong>。FAT12的两张表<strong>互为备份</strong>。</p>
+<h3 id="静态链接的过程"><a href="#静态链接的过程" class="headerlink" title="静态链接的过程"></a><a id="chapter4.11">静态链接的过程</a></h3><p>问题：解释静态链接的过程。</p>
+<p>参考：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/317478523">一文看懂静态链接 - 知乎 (zhihu.com)</a> 和 《静态链接动态链接》PPT的<strong>第6页的批注</strong>以及<a target="_blank" rel="noopener" href="https://blog.csdn.net/shenmingxueIT/article/details/107173906">静态链接——空间的地址和分配_静态链接内存的分配_shenmingik的博客-CSDN博客</a>。</p>
+<p>PS：第5和第6页PPT的内容和批注实际上描述了从两个视角看静态链接的过程，我把他们缝了一下。</p>
+<p>答：静态链接在编译阶段就将静态库加入到可执行文件中去。具体来说，是两件事：<strong>空间和地址分配</strong>，<strong>符号解析与重定位</strong>。<strong>更详细一点地说</strong>，是下述过程：</p>
+<p>假设我们有两个待链接文件a.o和b.o，我们的链接器首先做的是<strong>重定位节</strong>，即将这两个文件中同类型的节（比如.text）合并为同一类型的新的聚合节（在这里就是合并为ab中的.text）。接下来链接器将<strong>运行时存储器地址</strong>赋给新的聚合节，计算出长度，形成映射关系，由于各个指令以及全局变量在目标文件中的偏移是确定的，所以我们已经拥有了所有指令和全局变量的虚拟地址（到此为止，完成<strong>空间和地址分配</strong>）。</p>
+<p>接下来，我们利用<strong>符号表</strong>完成对<strong>符号引用</strong>的解析，将每一个符号引用和定义联系起来，再依据<strong>重定位条目</strong>（或称<strong>重定位段</strong>），通过已知的运行时地址修改代码节和数据节的符号引用（比如某些指令的立即数改成偏移量），到此，完成<strong>符号解析与重定位</strong>，静态链接完成。</p>
+<h3 id="动态链接的过程"><a href="#动态链接的过程" class="headerlink" title="动态链接的过程"></a><a id="chapter4.12">动态链接的过程</a></h3><p>问题：解释动态链接的过程。</p>
+<p>参考：贴个PPT里的参考链接：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/linhaostudy/p/10544917.html">参考资料</a></p>
+<p>答：动态链接是指<strong>在编译阶段仅加入一些描述信息</strong>，而<strong>程序执行时再从系统中把相应动态库加载到内存中去</strong>，后者又分为四步：<strong>动态链接器自举</strong>、<strong>装载共享对象</strong>、<strong>重定位与初始化</strong>、<strong>转交控制权</strong></p>
+<p>具体地说：</p>
+<p>假设我们有四个文件：da.c, db.c, mylib.h, 和mylib.c</p>
+<p>这是da.c：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;mylib.h&quot;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    fromLib(<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这是db.c：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;mylib.h&quot;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">    fromLib(<span class="number">2</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这是mylib.h：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifndef</span> LIB_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> LIB_H</span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">fromLib</span><span class="params">(<span class="type">int</span> i)</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+<p>这是mylib.c：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;mylib.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">fromLib</span><span class="params">(<span class="type">int</span> i)</span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>da.c与db.c都用到了mylib.c中的fromLib函数，为了<strong>只加载一次mylib.c到内存</strong>就让两个程序<strong>共享代码</strong>（数据是两个进程私有的），我们可以把lib.c编译成为<strong>共享对象</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -fPIC -shared -o myLib.so mylib.c</span><br></pre></td></tr></table></figure>
+
+<p><strong>-shared</strong>的意思是<strong>产生共享对象</strong>，<strong>-fPIC</strong>的意思是告诉编译器产生<strong>与位置无关的代码</strong>（全都是<strong>相对地址</strong>，<strong>没有绝对地址</strong>，这样程序搁哪都能跑）。</p>
+<p>尽管我们是动态链接，但是我们也要让程序知道<strong>跑的时候该去加载什么代码</strong>，所以我们在编译时仍然需要<strong>带上共享对象</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gcc -o Dap da.c ./myLib.so</span><br><span class="line">gcc -o Dbp db.c ./myLib.so</span><br></pre></td></tr></table></figure>
+
+<p>到此为止，我们完成了<strong>编译阶段描述信息的加入</strong>。</p>
+<p>接下来是运行时的工作，分为四步：</p>
+<p>第一步，<strong>动态链接器自举</strong>：</p>
+<p>由于动态链接器也需要多次复用，所以它也是共享对象，也需要重定位，但它又不能使用其他共享对象——甚至自己的函数和全局变量，它的重定位工作即由<strong>自举</strong>（bootstrap）来完成。动态链接器的入口就是自举代码的入口，自举代码将先找到自己的GOT（<strong>全局偏移表 Global Offset Table</strong>，存储<strong>符号对应的偏移量</strong>），在GOT的第一个入口找到<strong>.dynamic段</strong>（这个段存储了<strong>和动态链接相关的信息</strong>，比如动态链接依赖的共享对象，动态链接的符号表和重定位表的偏移以及共享对象初始化代码的地址）的偏移地址，从而从这个段获取动态链接器<strong>自身的符号表和重定位表</strong>的偏移，进而得到动态链接器本身的重定位入口，将<strong>自身的全局变量和函数</strong>重定位，这样，动态链接器就可以使用自己的全局变量和函数了。</p>
+<p>第二步，<strong>装载共享对象</strong>：</p>
+<p>前述的<strong>.dynamic段</strong>存储了<strong>动态链接相关的共享对象</strong>，在这一步，链接器拿到这些共享对象的名字放到一个装载集合中，接下来，链接器一个一个取出集合中的共享对象名，找到他们对应的文件，读取之，将共享对象的代码段和数据段映射到进程空间中。注意，如果这些共享对象<strong>还依赖于其他共享对象</strong>，那就把依赖的共享对象名放到装载集合中。简单地说，就是做一个图的遍历。此外，我们还需要将这些共享对象的符号表和链接器自身的符号表合并，成为<strong>全局符号表</strong>。</p>
+<p>第三步，<strong>重定位与初始化</strong>：</p>
+<p>一些<strong>重要的补充知识</strong>：动态链接的重定位时，并不是简单地修改代码段中的相对地址——这里需要补充一下，假设两个共享对象中有一个<strong>同名符号</strong>，那么即使我们编译的时候规定了哪个程序与哪个共享对象有关，程序中的这个符号也会被动态链接到<strong>先加载的共享对象的同名符号</strong>上，如果是一个共享对象的内部调用被全局符号表中先加载的符号<strong>覆盖</strong>的话，这个共享对象的相对地址也要被修改——这显然违背了共享对象的<strong>地址无关性</strong>。所以，在符号引用时，我们实际引入了所谓的<strong>PLT（Procedure Linkage Table，过程链接表）</strong>与<strong>GOT</strong>（全局偏移表）。符号引用时将会<strong>call</strong>符号对应的PLT——没错，所谓的过程链接表实际上是一段代码段，它的功能是，先在got.plt中查找符号地址，如果没有，再请求链接器去寻找所需地址并填入got.plt中。</p>
+<p>重定位与初始化的<strong>实际过程</strong>：链接器重新遍历可执行的文件和每个共享对象的重定位表，依据进程的全局符号表，将它们的GOT&#x2F;PLT的每个需要重定位的位置进行修正。完成之后，如果某个共享对象中有”.init”段，动态链接器还会执行其中的代码，完成共享对象特有的初始化（一个例子是c++中全局静态对象的构造）（与”.init”段相应的，还有”.finit”段，在进程退出时执行，不过这不关动态链接器的事）。注意，动态链接器执行的只是<strong>共享对象</strong>的.init段，进程自己的会由程序的初始化代码执行。</p>
+<p>第四步，<strong>转交控制权</strong>：</p>
+<p>动态链接器将进程的控制权转交给程序的入口并且开始执行。</p>
+<h3 id="gcc-vs-ld"><a href="#gcc-vs-ld" class="headerlink" title="gcc vs ld"></a><a id="chapter4.13">gcc vs ld</a></h3><p>问题：静态链接相关PPT中为什么使用ld链接而不是gcc？</p>
+<p>回（tu）答（cao）：实际上静态链接相关PPT中似乎只出现了两次ld命令，而且每次ld命令都说了可以换为gcc命令。这里感觉只能回答它们的区别。实际上，这两个东西就链接而言没有原则上的区别——gcc会调用ld，硬要较真的话，gcc会向生成的文件里额外加入“编译器隐式添加的全局加载时库初始化&#x2F;反初始化代码”。当然，gcc还能进行编译。</p>
+<p>gcc默认动态链接。</p>
+<h3 id="Linux下可执行文件的虚拟地址空间"><a href="#Linux下可执行文件的虚拟地址空间" class="headerlink" title="Linux下可执行文件的虚拟地址空间"></a><a id="chapter4.14">Linux下可执行文件的虚拟地址空间</a></h3><p>问题：linux下可执行文件的虚拟地址空间默认从哪里开始分配？</p>
+<p>回答：（主体回答来自gpt，同时从我<strong>“窥屏”</strong>的观察来看，似乎也是这个值）在 Linux 中，可执行文件的虚拟地址空间默认从 0x00400000 开始分配，至于为什么，链接器表示<strong>我就乐意选这个，谁爱管谁管</strong>（之前我还以为有什么高深的原因，结果一查发现。。。）。</p>
+<p><strong>To be continued…</strong></p>
+</article><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/blogOfNoob.github.io/teawith/21438.html" title="nasm拾遗"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">nasm拾遗</div></div></a></div><div class="next-post pull-right"><a href="/blogOfNoob.github.io/teawith/42176.html" title="未选择的路"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">未选择的路</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/blogOfNoob.github.io/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Mad Hatter</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/blogOfNoob.github.io/archives/"><div class="headline">Articles</div><div class="length-num">8</div></a><a href="/blogOfNoob.github.io/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/blogOfNoob.github.io/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">萌新一枚，随手记记</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BC%BC%E6%9B%BE%E7%9B%B8%E8%AF%86%E7%87%95%E5%BD%92%E6%9D%A5"><span class="toc-number">1.</span> <span class="toc-text">似曾相识燕归来</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96"><span class="toc-number">1.0.1.</span> <span class="toc-text">文件读取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pragma"><span class="toc-number">1.0.2.</span> <span class="toc-text">pragma</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96FAT12%E8%A1%A8"><span class="toc-number">1.0.3.</span> <span class="toc-text">读取FAT12表</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E2%80%9C%E6%89%93%E5%BC%80%E2%80%9D%E7%9B%AE%E5%BD%95%E9%A1%B9"><span class="toc-number">2.</span> <span class="toc-text">“打开”目录项</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%8C%BA%E7%9A%84%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="toc-number">2.0.1.</span> <span class="toc-text">数据区的文件夹</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LFN%E9%A1%B9%E7%9A%84%E4%BA%A7%E7%94%9F"><span class="toc-number">2.0.2.</span> <span class="toc-text">LFN项的产生</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E9%A1%B9%E5%8A%A8%E6%80%81%E5%8F%98%E5%8C%96%E7%AE%80%E6%9E%90"><span class="toc-number">2.0.3.</span> <span class="toc-text">目录项动态变化简析</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%80%E5%90%8E%E5%87%A0%E5%9D%97%E7%A0%96"><span class="toc-number">3.</span> <span class="toc-text">最后几块砖</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A9%E5%B7%B2%E5%AE%8C%E6%88%90%E7%9A%84cat"><span class="toc-number">3.0.1.</span> <span class="toc-text">早已完成的cat</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ls%E5%91%BD%E4%BB%A4%E5%92%8C-l%E9%80%89%E9%A1%B9"><span class="toc-number">3.0.2.</span> <span class="toc-text">ls命令和-l选项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E4%BC%A0%E5%8F%82%E4%B8%8E%E8%81%94%E5%90%88%E7%BC%96%E8%AF%91"><span class="toc-number">3.0.3.</span> <span class="toc-text">函数传参与联合编译</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Lab2%E9%97%AE%E7%AD%94"><span class="toc-number">4.</span> <span class="toc-text">Lab2问答</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E6%A8%A1%E5%BC%8F%E4%B8%8E%E4%BF%9D%E6%8A%A4%E6%A8%A1%E5%BC%8F"><span class="toc-number">4.0.1.</span> <span class="toc-text">实模式与保护模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E5%AD%90"><span class="toc-number">4.0.2.</span> <span class="toc-text">选择子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%8F%E8%BF%B0%E7%AC%A6"><span class="toc-number">4.0.3.</span> <span class="toc-text">描述符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GDT%E4%B8%8ELDT"><span class="toc-number">4.0.4.</span> <span class="toc-text">GDT与LDT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GDTR%E4%B8%8ELDTR"><span class="toc-number">4.0.5.</span> <span class="toc-text">GDTR与LDTR</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GDT%E6%9F%A5%E6%89%BE%E7%89%A9%E7%90%86%E5%9C%B0%E5%9D%80"><span class="toc-number">4.0.6.</span> <span class="toc-text">GDT查找物理地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LDT%E6%9F%A5%E6%89%BE%E7%89%A9%E7%90%86%E5%9C%B0%E5%9D%80"><span class="toc-number">4.0.7.</span> <span class="toc-text">LDT查找物理地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B9%E7%9B%AE%E5%BD%95%E5%8C%BA%E7%9B%B8%E5%85%B3%E9%97%AE%E7%AD%94"><span class="toc-number">4.0.8.</span> <span class="toc-text">根目录区相关问答</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%8C%BA%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%B0%87%E5%8F%B7"><span class="toc-number">4.0.9.</span> <span class="toc-text">数据区的第一个簇号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FAT%E8%A1%A8%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">4.0.10.</span> <span class="toc-text">FAT表的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5%E7%9A%84%E8%BF%87%E7%A8%8B"><span class="toc-number">4.0.11.</span> <span class="toc-text">静态链接的过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E7%9A%84%E8%BF%87%E7%A8%8B"><span class="toc-number">4.0.12.</span> <span class="toc-text">动态链接的过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gcc-vs-ld"><span class="toc-number">4.0.13.</span> <span class="toc-text">gcc vs ld</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux%E4%B8%8B%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6%E7%9A%84%E8%99%9A%E6%8B%9F%E5%9C%B0%E5%9D%80%E7%A9%BA%E9%97%B4"><span class="toc-number">4.0.14.</span> <span class="toc-text">Linux下可执行文件的虚拟地址空间</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/blogOfNoob.github.io/teawith/39322.html" title="一些手册的简单描述">一些手册的简单描述</a><time datetime="2023-05-31T15:29:17.000Z" title="Created 2023-05-31 23:29:17">2023-05-31</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/blogOfNoob.github.io/teawith/37800.html" title="secII淘金">secII淘金</a><time datetime="2023-05-30T15:42:27.000Z" title="Created 2023-05-30 23:42:27">2023-05-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/blogOfNoob.github.io/teawith/35878.html" title="OSLab4随笔">OSLab4随笔</a><time datetime="2023-05-22T15:14:32.000Z" title="Created 2023-05-22 23:14:32">2023-05-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/blogOfNoob.github.io/teawith/19536.html" title="OSLab3随笔">OSLab3随笔</a><time datetime="2023-05-07T07:43:33.000Z" title="Created 2023-05-07 15:43:33">2023-05-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/blogOfNoob.github.io/teawith/21438.html" title="nasm拾遗">nasm拾遗</a><time datetime="2023-04-03T15:17:01.000Z" title="Created 2023-04-03 23:17:01">2023-04-03</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/blogOfNoob.github.io/img/path.png')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Mad Hatter</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/blogOfNoob.github.io/js/utils.js"></script><script src="/blogOfNoob.github.io/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

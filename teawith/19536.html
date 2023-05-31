@@ -1,0 +1,587 @@
+<!DOCTYPE html><html lang="cn" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>OSLab3随笔 | 下午六点的茶会</title><meta name="author" content="Mad Hatter"><meta name="copyright" content="Mad Hatter"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="​		如题，这也是个非常普通的随笔。和以往不同的是，这次我暂且并不是写好了再写blog的，所以中间或许有翻车的可能性。（5.8更新：昨天下午开始做这个项目之后越写越嗨，不小心就写完了，结果这篇还是马后炮。这里顺便感谢助教wbgg，感谢他多次解答了我关于这个项目的疑惑，至于相应内容的公开，我还需要获得许可）(5.12更新：第六章中和进程有关的内容准备扔到Lab4的随笔去写了，对这次影响不大) ​">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OSLab3随笔">
+<meta property="og:url" content="https://miceforrat.github.io/blogOfNoob.github.io/teawith/19536.html">
+<meta property="og:site_name" content="下午六点的茶会">
+<meta property="og:description" content="​		如题，这也是个非常普通的随笔。和以往不同的是，这次我暂且并不是写好了再写blog的，所以中间或许有翻车的可能性。（5.8更新：昨天下午开始做这个项目之后越写越嗨，不小心就写完了，结果这篇还是马后炮。这里顺便感谢助教wbgg，感谢他多次解答了我关于这个项目的疑惑，至于相应内容的公开，我还需要获得许可）(5.12更新：第六章中和进程有关的内容准备扔到Lab4的随笔去写了，对这次影响不大) ​">
+<meta property="og:locale">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2023-05-07T07:43:33.000Z">
+<meta property="article:modified_time" content="2023-05-28T12:04:11.154Z">
+<meta property="article:author" content="Mad Hatter">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/blogOfNoob.github.io/img/favicon.png"><link rel="canonical" href="https://miceforrat.github.io/blogOfNoob.github.io/teawith/19536.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/blogOfNoob.github.io/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/blogOfNoob.github.io/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'OSLab3随笔',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-05-28 20:04:11'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/blogOfNoob.github.io/atom.xml" title="下午六点的茶会" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/blogOfNoob.github.io/archives/"><div class="headline">Articles</div><div class="length-num">8</div></a><a href="/blogOfNoob.github.io/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/blogOfNoob.github.io/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/blogOfNoob.github.io/img/path.png')"><nav id="nav"><span id="blog-info"><a href="/blogOfNoob.github.io/" title="下午六点的茶会"><span class="site-name">下午六点的茶会</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">OSLab3随笔</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2023-05-07T07:43:33.000Z" title="Created 2023-05-07 15:43:33">2023-05-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2023-05-28T12:04:11.154Z" title="Updated 2023-05-28 20:04:11">2023-05-28</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="OSLab3随笔"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>​		如题，这也是个非常普通的随笔。和以往不同的是，这次我暂且并不是写好了再写blog的，所以中间或许有翻车的可能性。（5.8更新：昨天下午开始做这个项目之后越写越嗨，不小心就写完了，结果这篇还是马后炮。这里顺便感谢助教wbgg，感谢他多次解答了我关于这个项目的疑惑，至于相应内容的公开，我还需要获得许可）(5.12更新：第六章中和进程有关的内容准备扔到Lab4的随笔去写了，对这次影响不大)</p>
+<p>​		这次的任务是和I&#x2F;O有关的，好消息是我们可以从ORANGE这本书上拿到很多有用的代码，其中的一部分甚至已经帮助我们完成了一部分的需求。坏消息是，书上走到这一步花了很大的篇幅去进行代码的书写，导致如果我们直接cv第七章最后的代码，容易感到无所适从，不知道从哪里开始动笔。大概我会花相当一部分的篇幅来做个书上内容的概括——这也权当是我自己的一点读书笔记，或者也可以起到一点导读的作用。之后对一些需要修改的<strong>无用的代码</strong>和我们<strong>可以利用的代码</strong>做一些简单的分析，最后进行一点点书写方面的<strong>简单描述</strong>。</p>
+<p>​		那么，继续吧。感谢诸位愿意继续看我胡言乱语。</p>
+<p>​		PS：如果想速通，跳到1.2和3.就行了。</p>
+<p>​		5.23 PS：关于问答，这里额外弄一个跳转链接：</p>
+<p><a href="#chapter4.2.1">第1题：解释中断向量 </a></p>
+<p><a href="#chapter4.1.1">第2题：解释中断类型码。</a></p>
+<p><a href="#chapter4.2.1">第3题：解释中断向量表 </a></p>
+<p><a href="#chapter4.2.2">第4题：实模式下中断程序地址如何得到？</a></p>
+<p><a href="#chapter4.3.2">第5题：保护模式下中断程序地址如何得到?</a></p>
+<p><a href="#chapter4.2.2">第6题：中断向量的地址如何得到? </a></p>
+<p><a href="#chapter4.2.2">第7题：实模式下如何根据中断向量的地址得到中断程序地址? </a></p>
+<p><a href="#chapter4.3.1">第8题：解释中断描述符。 </a></p>
+<p><a href="#chapter4.3.2">第9题：保护模式下中断描述符表如何得到? </a></p>
+<p><a href="#chapter4.3.2">第10题：保护模式下中断门如何得到?  </a></p>
+<p><a href="#chapter4.3.2">第11题：保护模式下如何根据中断门得到中断处理程序地址?  </a></p>
+<p><a href="#chapter4.1.2">第12题：中断的分类，并举例不同类型的中断。 </a></p>
+<p><a href="#chapter4.1.4">第13题：中断与异常的区别?  </a></p>
+<p><a href="#chapter4.4">第14题：实模式和保护模式下的中断处理差别 </a></p>
+<p><a href="#chapter4.5.1">第15题：如何识别键盘组合键（如 Shift+a）是否还有其他解决方案? </a></p>
+<p><a href="#chapter4.3.1">第16题：IDT 是什么，有什么作用? </a></p>
+<p><a href="#chapter4.3.1">第17题：IDT 中有几种描述符? </a></p>
+<p><a href="#chapter4.1.3">第18题：异常的分类?  </a></p>
+<p><a href="#chapter4.5.2">第19题：用户态和内核态的特权级分别是多少?  </a></p>
+<p><a href="#chapter4.2.1">第20题：中断向量表中，每个中断有几个字节?里面的结构是什么? </a></p>
+<p><a href="#chapter4.1.4">第21题：中断异常共同点（至少两点），不同点（至少三点） </a></p>
+<p><strong>实现过程中可能的问题</strong>，待补充：</p>
+<p><a href="#chapter1.2">为什么用ORANGE的代码make image失败？</a></p>
+<p><a href="#chapter1.1.4">为什么用ORANGE的代码跑起来后屏幕上有乱码？</a></p>
+<p><a href="#chapter3.2.3">为什么明显不到20s就清屏了？</a></p>
+<p><a id="list"><strong>目录</strong></a></p>
+<p><a href="#chapter1">1. 工具箱，但是黑盒（在IO之前）</a></p>
+<p><a href="#chapter1.1">1.1 逃离汇编</a></p>
+<p><a href="#chapter1.1.1">1.1.1 加载内核文件</a></p>
+<p><a href="#chapter1.1.2">1.1.2 进入保护模式</a></p>
+<p><a href="#chapter1.1.3">1.1.3 内核提取与控制移交</a></p>
+<p><a href="#chapter1.1.4">1.1.4 保护模式的延续</a></p>
+<p><a href="#chapter1.2">1.2 自动化编译之路</a></p>
+<p><a href="#chapter1.2.1">1.2.1 Makefile基础</a></p>
+<p><a href="#chapter1.2.2">1.2.2 让我们的项目跑起来</a></p>
+<p><a href="#chapter1.2.3">1.2.3 更加自动化</a></p>
+<p><a href="#chapter1.3">1.3 IO的前奏</a></p>
+<p><a href="#chapter1.3.1">1.3.1 特权级的限制与跨越</a></p>
+<p><a href="#chapter1.3.1.1">1.3.1.1 CPL、DPL、RPL</a></p>
+<p><a href="#chapter1.3.1.2">1.3.1.2 门</a></p>
+<p><a href="#chapter1.3.1.3">1.3.1.3 被遗忘的堆栈</a></p>
+<p><a href="#chapter1.3.1.4">1.3.1.4 call和ret；ret的独走</a></p>
+<p><a href="#chapter1.3.2">1.3.2 中断机制的引入</a></p>
+<p><a href="#chapter1.3.2.1">1.3.2.1 中断机制：理论</a></p>
+<p><a href="#chapter1.3.2.2">1.3.2.2 中断机制：实现</a></p>
+<p><a href="#chapter1.3.2.3">1.3.2.3 时钟中断和中断嵌套</a></p>
+<p><a href="#chapter2">2. 工具箱，但是黑盒（IO）</a></p>
+<p><a href="#chapter2.1">2.1 一次敲击的信息量</a></p>
+<p><a href="#chapter2.1.1">2.1.1 建立连接</a></p>
+<p><a href="#chapter2.1.2">2.1.2 Make Code和Break Code</a></p>
+<p><a href="#chapter2.2">2.2 操纵显存</a></p>
+<p><a href="#chapter2.2.1">2.2.1 显示内容和显示范围</a></p>
+<p><a href="#chapter2.2.2">2.2.2 *多TTY的构建</a></p>
+<p><a href="#chapter2.3">2.3 有用但残缺</a></p>
+<p><a href="#chapter3">3. 正式修改</a></p>
+<p><a href="#chapter3.1">3.1 我们有什么</a></p>
+<p><a href="#chapter3.1.1">3.1.1 实现了什么</a></p>
+<p><a href="#chapter3.1.2">3.1.2 手头的框架</a></p>
+<p><a href="#chapter3.2">3.2 先从清屏开始</a></p>
+<p><a href="#chapter3.2.1">3.2.1 *消灭用户进程和多TTY</a></p>
+<p><a href="#chapter3.2.2">3.2.2 清屏</a></p>
+<p><a href="#chapter3.2.3">3.2.3 时间的灾难</a></p>
+<p><a href="#chapter3.3">3.3 一步一个脚印，但是速通</a></p>
+<p><a href="#chapter3.3.1">3.3.1 基本功能速通</a></p>
+<p><a href="#chapter3.3.2">3.3.2 查找功能速通</a></p>
+<p><a href="#chapter3.3.3">3.3.3 撤回功能速通</a></p>
+<p><a href="#chapter4">4. Lab3问答整理</a></p>
+<p><a href="#chapter4.1">4.1 中断（通用）</a></p>
+<p><a href="#chapter4.1.1">4.1.1 中断类型码</a></p>
+<p><a href="#chapter4.1.2">4.1.2 中断的分类</a></p>
+<p><a href="#chapter4.1.3">4.1.3 异常的分类</a></p>
+<p><a href="#chapter4.1.4">4.1.4 中断与异常的异同</a></p>
+<p><a href="#chapter4.2">4.2 实模式下的中断</a></p>
+<p><a href="#chapter4.2.1">4.2.1 中断向量和中断向量表</a></p>
+<p><a href="#chapter4.2.2">4.2.2 实模式下获取中断处理程序的入口</a></p>
+<p><a href="#chapter4.3">4.3 保护模式下的中断</a></p>
+<p><a href="#chapter4.3.1">4.3.1 中断描述符和IDT</a></p>
+<p><a href="#chapter4.3.2">4.3.2 保护模式下获取中断处理程序的入口</a></p>
+<p><a href="#chapter4.4">4.4 实模式和保护模式下中断处理的差别</a></p>
+<p><a href="#chapter4.5">4.5 其他</a></p>
+<p><a href="#chapter4.5.1">4.5.1 键盘组合键的识别</a></p>
+<p><a href="#chapter4.5.2">4.5.2 用户态和内核态的特权级</a></p>
+<h1 id="工具箱，但是黑盒（在IO之前）"><a href="#工具箱，但是黑盒（在IO之前）" class="headerlink" title="工具箱，但是黑盒（在IO之前）"></a><a id="chapter1">工具箱，但是黑盒（在IO之前）</a></h1><p>​		这次实验反正明说了可以改随书光盘的代码，不过咱也不可能完全不看书直接cv代码就开始硬改，毕竟一百多页的和代码结合的内容，说实话真要吸收还挺麻烦的。所以，我们得先把ORANGE这几章讲了什么摸清楚（虽然要求说只要看三、四、五、七这四章，但第六章是进程相关的，不可能一点不去看），至少，先看看我们拿到的工具箱里有什么。</p>
+<p>​		</p>
+<h2 id="逃离汇编"><a href="#逃离汇编" class="headerlink" title="逃离汇编"></a><a id="chapter1.1">逃离汇编</a></h2><p>​		写汇编真的是很痛苦的一件事，可是就我们Lab1的进度来看，我们这个时候还得再苦一苦自己。我们Lab1的Loader并不是完整的，他只执行了一个打印的工作，别的啥都没干，这显然是不符合我们需要的。我们需要更多的地址空间、更加完备的设备管理、一些额外的访问控制，凡此种种，在现有的实模式下可能还是有些别扭了。此外，我们也想赶快开始进行c语言代码的编写。因此，进一步读取Kernel和<strong>开启保护模式</strong>势在必行，这就是第三、第四、第五章在做的事情。</p>
+<h3 id="加载内核文件"><a href="#加载内核文件" class="headerlink" title="加载内核文件"></a><a id="chapter1.1.1">加载内核文件</a></h3><p>​		光盘代码真正的工作推进是从5.4节开始的。首先是5.4.1节，这一节做了和我们lab1中boot.asm做的事情差不多的事——找到kernel.bin并加载之，再去放到合适的位置。成分的提取并没有马上就完成，因为涉及到一些其他函数的书写和调用，我们最好还是先把保护模式开起来再说。</p>
+<h3 id="进入保护模式"><a href="#进入保护模式" class="headerlink" title="进入保护模式"></a><a id="chapter1.1.2">进入保护模式</a></h3><p>​		进入5.4.2节，我们需要跳入保护模式（相应的知识点在书<strong>第31至35页</strong>），在这里，我们需要准备好全局段描述符表（GDT），并且我们需要<strong>将基址和限长加载到GDTR</strong>中（lgdt指令）。之后因为一些历史遗留原因（第34页有讲述），我们需要<strong>打开A20地址线</strong>从而支持超过1M地址空间的寻址。接下来，将<strong>cr0寄存器的PE位置为1</strong>（若这一位为0，则为实模式），最后地址跳转，正式进入保护模式。</p>
+<p>​		进入保护模式后，我们初始化了寄存器——比如<strong>代码段寄存器</strong>等。同时为了虚拟存储的需求，我们<strong>开启了分页</strong>——在此之前，我们让内核打印了内存的相关信息。</p>
+<h3 id="内核提取与控制移交"><a href="#内核提取与控制移交" class="headerlink" title="内核提取与控制移交"></a><a id="chapter1.1.3">内核提取与控制移交</a></h3><p>​		然而，到这一步，loader的工作还没有完。我们读进来的elf文件里面的东西相当杂乱，我们还需要提取出其中的有效内容（<strong>elf文件的相关信息</strong>参见书上第5.3节）放到合适的地方去。这里我也给一张图辅助说明：</p>
+<img src="/blogOfNoob.github.io/teawith/19536/structelf.jpg" class="" title="elf文件结构">
+
+<p>​		首先<a id="fnobuiltin"></a>是ELF Header，这里面存储了一些信息，我们需要用到的有elf头的大小——这能帮我们定位<strong>program Header Table</strong>所在地，而这是我们真正需要的东西——这些程序头可以描述相关的段该被扔到内存中的什么位置，根据他们提供的信息，再配合第三章不知道什么时候写的memcpy函数（顺便一提，这个函数很明显和编译器的<strong>内建函数</strong>重名，所以我们编译时需要加上<strong>-fno-builtin</strong>编译选项，下文会进一步提到一些编译选项）完成对内核中真正有用的部分的迁移。在这里，上一次的Lab的提问中有提到linux开始编译的位置，由于我们是32位环境，所以编译器默认起始地址在0x08048000开始，这对于我们的实验并不一定合适，因此我们通过链接时额外指定起始地址来进行约束：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nasm -f elf32 -o kernel.o kernel.asm</span><br><span class="line">ld -s -Ttext 0x30400 -o kernel.bin kernel.o</span><br></pre></td></tr></table></figure>
+
+<p>​		至于为什么选择了<strong>0x30400</strong>这个值，书上第138到140页说的很清楚，我就不越俎代庖了。</p>
+<p>​		完成内核中的有效内容的提取后，我们只需要像在boot中做的那样，向内核移交控制权就好了。</p>
+<p>​		到这里为止，我们终于可以开始用c语言和汇编一同来书写我们的内核了——是的，从效用考虑，我们还不能完全放弃汇编，但麻烦的事情已经大大减少了。在汇编中使用<strong>extern关键字</strong>，我们可以调用相应的c函数以及访问相应的c代码中的全局变量，同时通过<strong>global关键字</strong>，也使我们能够完成对汇编的调用，相关内容参看书上第5.2节。</p>
+<h3 id="保护模式的延续"><a href="#保护模式的延续" class="headerlink" title="保护模式的延续"></a><a id="chapter1.1.4">保护模式的延续</a></h3><p>​		现在我们把控制权移交给了kernel，但是我们碰到了个问题，先不考虑一些深层次的问题，就说<strong>GDT里面的数据</strong>和堆栈吧，我们还放在loader里面呢。而且在c代码里面操作汇编里的某个数据结构……嘶。所以我们得在内核中整一个新的GDT出来。书上代码利用一个变量gdt_ptr进行操作，先将GDTR里面的内容存进去(sgdt指令)，在c代码中获得旧的GDT的地址与限长之后，取出其中的内容，放到新的GDT中，最后将新的GDT的基址和限长存到gdt_ptr中，到汇编代码中用lgdt将之加载到GDTR中。这是一个非常简单但是漂亮的<strong>汇编和c的协作</strong>的例子。</p>
+<p>​		接下来书上讲了一些宏定义和变量定义的内容，这些主要是为了编码方便——事实上实操的时候很容易也能看出来了。</p>
+<p>​		不过光盘里面的代码不一定完全适用于现在，至少接下来就有一个例子可以证明我们的观点，那就是kliba.asm（如果看第7章的光盘代码的话，这个汇编文件应该在lib文件夹下）下的<strong>disp_str函数</strong>（和他几乎类似的<strong>disp_color_str</strong>也有这个问题）。这里还看不出来有什么问题，不过后面cv代码跑起来之后就会看到，当这个函数在某次打印后打印出<strong>回车</strong>后，后续打印的内容对应的地址就飞到不知道哪里去了。原因是这个函数在<strong>检测回车的分支</strong>中，操作了<strong>基址寄存器ebx</strong>中的数据，却没有在操作前后<strong>进行被调用者保存与恢复</strong>。当然，这个其实不影响我们写这次lab，不过建议还是关注一下，修一下也很快，直接将觉得有风险的寄存器压栈（注意一下压栈的地方会不会影响到后续<strong>通过栈顶指针取参数</strong>，会的话改一下值就行了），后续再pop出来即可：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">push	ebp</span><br><span class="line">push	eax	;新加入</span><br><span class="line">push	ebx	;新加入</span><br><span class="line">mov	ebp, esp</span><br><span class="line">mov	esi, [ebp + 16] ;修改数值</span><br><span class="line">  	... ...</span><br><span class="line">  	pop ebx ;新加入</span><br><span class="line">  	pop eax	;新加入</span><br><span class="line">  	pop ebp</span><br></pre></td></tr></table></figure>
+
+<p>​		到这里为止，书上整理了一下结构，所以后续的光盘代码结构就比较清晰了。而接下来，书上重点讲述了<strong>Makefile</strong>相关的内容。</p>
+<h2 id="自动化编译之路"><a href="#自动化编译之路" class="headerlink" title="自动化编译之路"></a><a id="chapter1.2">自动化编译之路</a></h2><p>​		每次都输一大堆命令着实很难绷，实际上在上一次的Lab中，我们就用到了Makefile。关于Makefile，书上写的比较明白了，不过考虑到我之前没仔细写过相关内容，这里还是写一下。</p>
+<h3 id="Makefile基础"><a href="#Makefile基础" class="headerlink" title="Makefile基础"></a><a id="chapter1.2.1">Makefile基础</a></h3><p>​		一个比较核心的语法是：</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">target: prerequisites</span></span><br><span class="line">	command</span><br></pre></td></tr></table></figure>
+
+<p>​		这个意思的含义是，要想得到target，需要执行command中的所有命令。target依赖于prerequisites，只有prerequisites中的文件至少有一个比target的新时，command才被执行。</p>
+<p>​		考虑到<strong>可修改性</strong>，我们可以将一些值用类似<strong>变量</strong>的方式存起来方便重用。为了方便，这里我直接以chapter 7中的某个Makefile作为例子（当然，这个makefile我修改过了）：</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ASM		= nasm</span><br><span class="line">ASMKFLAGS	= -I <span class="keyword">include</span>/ -f elf32</span><br><span class="line">......</span><br><span class="line">kernel/kernel.o : kernel/kernel.asm <span class="keyword">include</span>/sconst.inc</span><br><span class="line">	<span class="variable">$(ASM)</span> <span class="variable">$(ASMKFLAGS)</span> -o <span class="variable">$@</span> <span class="variable">$&lt;</span></span><br></pre></td></tr></table></figure>
+
+<p>​		比如这里，我们将编译汇编的工具nasm存到了ASM变量中，之后如果我们想要取出它的值该怎么办呢？我们可以用$取出其值，这样$(ASM)就得到了nasm这个字符串。类似地，ASMKFLAGS这个“变量”也是这样的作用。-o的作用我们已经很了解了——它指定了输出到什么文件。<strong>$@<strong>的意思是target，而</strong>$&lt;</strong>是prerequisites的<strong>第一个名字</strong>。</p>
+<p>​		之后，需要介绍一下<strong>.PHONY</strong>关键字：</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.PHONY : everything final image clean realclean disasm all buildimg</span><br></pre></td></tr></table></figure>
+
+<p>​		他的意思是，后面这些可以被理解为<strong>动作</strong>。当然，并不是只有被<strong>.PHONY</strong>修饰的内容才可以被make，这个的好处是，即使你的工作路径下有<strong>和动作同名的文件</strong>，依然可以正常make。</p>
+<h3 id="让我们的项目跑起来"><a href="#让我们的项目跑起来" class="headerlink" title="让我们的项目跑起来"></a><a id="chapter1.2.2">让我们的项目跑起来</a></h3><p>​		接下来我们要试着让我们自己的项目跑起来——他的Makefile不一定适用于我们的环境。</p>
+<p>​		我直接上我这里的<strong>关键设置</strong>，然后解释为什么：</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ASMKFLAGS	= -I <span class="keyword">include</span>/ -f elf32</span><br><span class="line">CFLAGS		= -I <span class="keyword">include</span>/ -c -fno-builtin -m32 -fno-stack-protector</span><br><span class="line">LDFLAGS		= -s -Ttext <span class="variable">$(ENTRYPOINT)</span> -m elf_i386</span><br></pre></td></tr></table></figure>
+
+<p>​		先从简单的开始说，CFLAGS中的<strong>-fno-builtin</strong>选项是原来自带的，原因<a href="#fnobuiltin">上面</a>也解释过了。</p>
+<p>​		-m32是编译32位代码，这也没什么好解释的。下面LDFLAGS中的<strong>-m elf_i386</strong>的意思是选择用elf_i386模拟器进行链接模拟32位环境。</p>
+<p>​		下面着重说一下<strong>-fno-stack-protector</strong>参数，他的作用是<strong>禁用堆栈保护</strong>。如果不禁用堆栈保护，编译器编译的时候会塞一个<strong>堆栈保护器</strong>——然而到了<strong>链接</strong>的时候，因为咱们没有引库函数，链接时直接原地爆炸，所以这里需要禁用堆栈保护。</p>
+<p>​		到这里为止，我们的项目应该可以一个make就编译好了，不过我们还得让他跑起来：</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">run: image</span></span><br><span class="line">	bochs</span><br></pre></td></tr></table></figure>
+
+<p>​		这样我们make run就可以启动虚拟机了。</p>
+<h3 id="更加自动化"><a href="#更加自动化" class="headerlink" title="更加自动化"></a><a id="chapter1.2.3">更加自动化</a></h3><p>​		不过其实，我们现在还有一些<strong>啸问题</strong>，比如我们必须假定我们有一个<strong>映像a.img</strong>，但如果没有，我们需要bximage。但bximage指令不可能不做其他操作吧？该怎么办呢？我在这部分就不禁感慨<strong>当年Linux没好好学</strong>。</p>
+<p>​		我们可以先用<strong>bximage --help</strong>命令看看有什么东西：</p>
+<p>​		<img src="/blogOfNoob.github.io/teawith/19536/bximagehelp.jpg" class="" title="bximagehelp"></p>
+<p>​		<strong>-q</strong>可以帮我们屏蔽用户的输入，同时-mode可以指定输入模式为create，-fd还能指定大小1.44M，最后我们再按照格式在最后加入a.img就行了。这很好，让我们试一试：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bximage -mode=create -fd=1.44M -q a.img</span><br></pre></td></tr></table></figure>
+
+<img src="/blogOfNoob.github.io/teawith/19536/bximagereplace.jpg" class="" title="bximagereplace">
+
+<p>​		啊这，我们已经有了一个a.img了，现在提示我们要不要替换，这也是个额外操作，可是刚才看到的help也没说怎么处理这个啊。</p>
+<p>​		当然，我们可以判断下面有没有相应的文件，然后<strong>rm</strong>。但是我的室友教了我一个比较粗暴但是有用的办法——利用<strong>管道</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">yes</span> | bximage -mode=create -fd=1.44M -q a.img</span><br></pre></td></tr></table></figure>
+
+<p>​		Linux下面有一个<strong>可执行文件yes</strong>会不断打印y，这样的话就能帮我们自动确认了。</p>
+<p>​		另外一个问题是每次打开虚拟机的时候都会要<strong>输入一个c</strong>，这个我们也想自动化该怎么办？</p>
+<p>​		当然利用<strong>管道</strong>也不是不行，但这样会给调试带来一些麻烦，后续对虚拟机的调试输入必须通过管道而不是IO。</p>
+<p>​		事实上我们可以用<strong>bochs --help</strong>命令再看看有什么：</p>
+<img src="/blogOfNoob.github.io/teawith/19536/bochshelp.jpg" class="" title="bochshelp">
+
+<p>​		这里我们看到一个<strong>-rc选项</strong>，它可以批处理一个指定文件名中的debug命令，只要我们开一个文件，写上一个c，再指定其为<strong>-rc选项后面的文件名参数</strong>即可。</p>
+<p>​		到此为止，我们的自动化程度已经很高了。唯一可能需要手动的就是<strong>sudo</strong>时输入密码了——但是研究怎么密文存储还是有点麻烦的，应该这里不至于做到那么麻烦。</p>
+<p>​		<a href="#list">从这里返回目录</a></p>
+<h2 id="IO的前奏"><a href="#IO的前奏" class="headerlink" title="IO的前奏"></a><a id="chapter1.3">IO的前奏</a></h2><p>​		现在我们可能还能通过书写内核代码来实现我们的功能，但是作为一个操作系统，我们在假想中总是要把它移交给其他用户的。到那时，我们需要给他们提供一些调用内部代码的接口、提供独立的运行环境，并设计进程调度的内容，这些就是ORANGE<strong>第五章后半部分和第六章</strong>在做的事情。不过由于第六章中完全实现进程的部分对这次的影响不大，所以就放到下次随笔去写，我在后面会专门标出来需要<strong>处理</strong>哪些可能造成影响的第六章的内容。</p>
+<h3 id="特权级的限制与跨越"><a href="#特权级的限制与跨越" class="headerlink" title="特权级的限制与跨越"></a><a id="chapter1.3.1">特权级的限制与跨越</a></h3><p>​		这里我需要插入一段闲笔，来讲讲特权级的相关内容，接下来直到我们讲到中断机制为止的内容，将对应着ORANGE书上<strong>第48到62页</strong>讲述的内容。</p>
+<p>​		当我们需要引入用户程序时，我们不可避免地要面对一个问题：我们是不是允许用户程序直接使用代码，操纵所有的数据？答案恐怕是否定的，用户程序对一些内容——比如一些和段相关的寄存器的操纵显然不能被允许。于是我们需要一些接口来使用内部的资源和方法。因此，引入特权级是必然的事情。</p>
+<h4 id="CPL、DPL、RPL"><a href="#CPL、DPL、RPL" class="headerlink" title="CPL、DPL、RPL"></a><a id="chapter1.3.1.1">CPL、DPL、RPL</a></h4><p>​		比较容易想到的特权验证思路是针对被使用者和使用者设置相应的特权级，这就是<strong>DPL</strong>（Descriptor Privilege Level，这里的描述符Descriptor除了段描述符，还可能是<strong>门描述符</strong>，下面会说到）与<strong>CPL</strong>（Current Privilege Level）。这里需要额外解释所谓<strong>一致代码段</strong>与<strong>非一致代码段</strong>，所谓的<strong>一致</strong>，是指如果转移的目标是特权级更高的代码段，当前的特权级会<strong>延续下去</strong>。但是仅仅设置DPL和CPL是不够的，我们显然应该给一个低特权级的程序访问高特权级代码段的机会，但是如果这样，低特权级的程序是否有机会<strong>间接访问</strong>高特权级的数据呢？想想也令人发冷。因此我们要设置一个额外的<strong>RPL</strong>（Request Privilege Level），被调用者接收到一个选择子时，会将选择子里的特权级设置为<strong>调用者的特权级</strong>，在检查时则取CPL与RPL二者特权更强者。</p>
+<p>​		因此，我们再介绍一下DPL对应段的特权级要求，这一部分在书上第49页也有提到：</p>
+<p>​		对于数据段、<strong>调用门</strong>和<strong>TSS</strong>(Task State Stack，这是书上的说法，在<strong>第56页</strong>，我看网上对同一个东西还有Task State Segment的说法，它的作用是保有不同权限下的栈指针等)，DPL给出的是访问的<strong>最低特权级</strong>（即从该特权级向内核的特权级内的所有特权级的代码段可以访问）；对于非一致代码段，DPL给出的是访问的唯一特权级；对于一致代码段和通过调用门访问的非一致代码段，DPL给出的则是访问所需要的最高特权级。</p>
+<p>​		下一个问题是，如何实现<strong>不同特权级之间的转移</strong>？自然地，我们会想到<strong>jmp</strong>或者<strong>call</strong>这两个汇编指令。然而，如果我们只是在目标操作数中加上<strong>目标代码段的段选择子</strong>，由于上一自然段中讲述的特权级的限制，我们并不能实现较为全能的转移，对于非一致代码段，只能转向特权级相同的；若要跳转到一致代码段，也不能转向特权级更低的。</p>
+<p>​		现在我们面临两个问题：单纯的跳转无法实现自由的非一致代码段的转移。同时高特权级转向低特权级的代码段也不被允许。</p>
+<h4 id="门"><a href="#门" class="headerlink" title="门"></a><a id="chapter1.3.1.2">门</a></h4><p>​		在这里，我们可以引入一个所谓的<strong>“门”</strong>，实际上，它也是一种<strong>描述符</strong>：</p>
+<img src="/blogOfNoob.github.io/teawith/19536/gateDescriptor.jpg" class="" title="gate">
+
+<p>​		这里的选择子指的是对应代码段的选择子，偏移量自不必多说。第5个字节的属性中，DPL的含义上面已经提过，其他的属性在上一次Lab的回答中也基本描述过了。第四个字节（BYTE4）中的<strong>Param Count</strong>指的是参数的数量，其作用将在后面揭示。</p>
+<p>​		这样，通过门描述符选择子和偏移量，我们指定了将要跳转的地址，只不过和直接跳转不同的是，我们是利用了门在访问特权级上的的特殊性，而上面我们转述的DPL规则中有这么一条：</p>
+<p>​		<em>对于一致代码段和通过调用门访问的非一致代码段，DPL给出的则是访问所需要的最高特权级。</em></p>
+<p>​		这样对于一个低特权级的代码段，我们可以先跳到一个<strong>特权级一样或更弱的门</strong>处，通过调用门去访问<strong>特权级更强的代码段</strong>，这样我们就实现了低特权级到高特权级的跳转。不过在具体实现上，jmp和call又有所区别，请参见书上<strong>第54页给出的表格</strong>。</p>
+<h4 id="被遗忘的堆栈"><a href="#被遗忘的堆栈" class="headerlink" title="被遗忘的堆栈"></a><a id="chapter1.3.1.3">被遗忘的堆栈</a></h4><p>​		在上面热火朝天地讨论了半天各种各样的权限的时候，我们似乎忘记了什么，比如说，堆栈。</p>
+<p>​		作为一个非常方便的传递数据的结构，堆栈似乎也是不能在不同特权级的代码段之间随便就共享的。自然，在不同特权级之间切换时，我们也需要切换堆栈。但是问题来了，我们在call之前将调用者eip压栈，如果是长跳转，还会将cs寄存器的值压栈，这是期望在返回时，我们能够从堆栈中拿到这些值，可是我们已经切换了堆栈，这些值必须要以某种方式保存下来。此外，我们<strong>每个特权级如果都需要一个堆栈</strong>的话，在哪里存相应的值呢？</p>
+<p>​		这里我们不但没有解决剩下的从高特权级跳转低特权级的问题，还多了两个问题。不过，当我们解决这两个问题的时候，相应的跳转问题也将迎刃而解。</p>
+<p>​		首先是第一个问题，以Intel为例，它提供了某种机制，在堆栈之间复制内容（见书上第57页的图3.19）。</p>
+<p>​		对于第二个问题，我们引入了一种被称为<strong>TSS</strong>的数据结构：</p>
+<img src="/blogOfNoob.github.io/teawith/19536/TSS.jpg" class="" title="TSS">
+
+<p>​		最下面这些就是和堆栈相关的信息了，也正是我们需要的东西，当我们想要去寻找相关信息就可以从他们中去找。</p>
+<h4 id="call和ret；ret的独走"><a href="#call和ret；ret的独走" class="headerlink" title="call和ret；ret的独走"></a><a id="chapter1.3.1.4">call和ret；ret的独走</a></h4><p>​		于是对于长调用，我们有如下的步骤（在call之前<strong>参数即已压栈</strong>）：</p>
+<p>​		根据目标代码段的<strong>DPL</strong>，我们可以确定将要跳转到的特权级，进而去TTS中找寻对应的ss和esp并读取。既然是段的操作，如果发现ss、esp甚至是TSS的<strong>界限错误</strong>，将会导致<strong>无效TSS异常</strong>。接下来检验ss描述符，这中间也可能发生无效TSS异常。之后我们并不能直接切换或者将ss和esp压栈，因为我们要保证<strong>函数返回时</strong>，ss和esp必须<strong>在参数之后出栈</strong>，所以我们需要先暂存当前的ss和esp，然后将ss和esp切换为新的堆栈对应的值。到这里为止，我们切换到了新的特权级的堆栈，然后再将ss和esp压栈，这样他们就将在新堆栈中压在旧堆栈下面了。接下来我们将要回收一个伏笔：那就是调用门中的<strong>Param Count</strong>，根据这个值，我们可以将<strong>调用者堆栈</strong>中的相应数量的参数<strong>复制到被调用者堆栈中</strong>。最后，为了方便返回，我们将当前的cs和eip压栈，并加载新的cs和eip，开始被调用者过程。</p>
+<p>​		注意到Param Count只有5位，如果参数超过了31个（多少有点大可不必了），我们还可以让某个参数变为指向某个数据结构的指针，或者邪恶一点，用新堆栈中的ss和esp拿到旧堆栈的地址。</p>
+<p>​		返回（<strong>ret</strong>）时则几乎反过来。先检查保存的cs的<strong>RPL</strong>，从而确定返回时是否需要切换特权级。然后加载cs和eip，这其中的代码段描述符和选择子类型的<strong>特权级检查</strong>也少不了。之后，如果有参数，则跳过参数，接着加载ss和esp，回到<strong>被调用者堆栈</strong>，做相应的检验，丢弃被调用者的ss和esp。如果有参数，再<strong>在调用者堆栈中跳过参数</strong>。最后，如果不是一致代码段，还需要检查其他段寄存器的值，如果出现DPL小于CPL的情况，一个<strong>空的描述符</strong>会被加载到相应的段寄存器中去。</p>
+<p>​		但是，到这里，我们似乎还是没有解决从高特权级到低特权级的问题？</p>
+<p>​		对于ret指令，一般认为这是要和call成对出现的，但是从我们刚才的叙述中，其实不难发现，ret只不过是一系列操作的组合，或者也可以认为是封装。所以，我们当然可以<strong>单独出现ret</strong>——只要我们自己准备好了对应的要跳转到的代码段使用的堆栈相关的的ss、esp以及决定跳转地址的cs和eip，然后调用ret指令，就可以实现高特权级到低特权级的跳转——所谓的“地址跳转”，无非是<strong>修改cs和eip寄存器的值</strong>，只要实现了这组操作的指令，都可以认为是有跳转功能的。</p>
+<h3 id="中断机制的引入"><a href="#中断机制的引入" class="headerlink" title="中断机制的引入"></a><a id="chapter1.3.2">中断机制的引入</a></h3><p>​		实际上我们这一次需要完成的I&#x2F;O，从本质上来说并不属于系统内部，所以我们需要完成一套处理机制来打断当前的内核程序，从而使其处理来自系统内外的意外情况，也就是<strong>中断机制</strong>，这也正是书上接着在5.5.4节中进行的。</p>
+<p>​		不过在此之前，我们还是有必要<strong>从理论上</strong>了解一下中断机制。</p>
+<h4 id="中断机制：理论"><a href="#中断机制：理论" class="headerlink" title="中断机制：理论"></a><a id="chapter1.3.2.1">中断机制：理论</a></h4><p>​		中断的汇编指令相信诸位都不陌生了：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int 15h</span><br></pre></td></tr></table></figure>
+
+<p>​		对于中断，我们当然可以用表驱动的方式，维护一张中断向量表，将中断按照情况分为不同的类，并赋予中断向量号，然后根据中断时的中断向量号（中断向量号×4即为偏移量），获取相应的处理例程。</p>
+<p>​		但是现在我们到了<strong>保护模式</strong>下，事情开始发生了变化，我们的中断向量表变成了<strong>IDT</strong>（Interrupt Descriptor Table <strong>中断描述符表</strong>），其中的描述符有<strong>中断门描述符</strong>、<strong>陷阱门描述符</strong>和任务门描述符（Linux系统下不常用）。</p>
+<p>​		既然是门，它的结构就和调用门描述符的类似：</p>
+<img src="/blogOfNoob.github.io/teawith/19536/intgate.jpg" class="" title="intGate">
+
+<p>​		这里的段选择符（段选择子）将会指示中断处理例程所在的段，偏移量则指示例程始址在段内的偏移。其他的量作用也类似。</p>
+<p>​		从而我们可以给出保护模式下基于IDT的中断处理例程：</p>
+<img src="/blogOfNoob.github.io/teawith/19536/intPro.jpg" class="" title="intPro">
+
+<p>​		先通过<strong>IDTR</strong>拿到中断描述符表的基址和限长，然后通过中断向量号×<strong>8</strong> （中断门的大小，以字节为单位）拿到对应中断门的偏移量，这中间需要进行越界检查。通过取得的中断描述符中的选择子，根据其从0开始的第2位，选择GDT或LDT方式（见Lab2的问答部分）拿到对应的段描述符——这中间显然也有<strong>越界检查</strong>，这个段描述符的验权通过后，我们将会得到对应的中断服务子例程的起始地址，做相应处理后再转交控制权，就可以开始中断处理了。</p>
+<p>​		对于保护模式能处理的中断和异常有哪些，书上<strong>第89页</strong>的表格给的比较详细了。表格中“类型”这一列中，interrupt的的意思毋须多言，剩下三个概念，即<strong>fault、trap和abort</strong>，后面问答也会给出具（chao）体（shu）的定义。简单地说，这三个概念都是<strong>异常</strong>，区别在于，fault是可以被更正的异常，处理fault之前，将会将<strong>产生fault的指令</strong>之前的状态保存下来，处理之后，<strong>继续执行这一条指令</strong>。trap更像是<strong>请君入瓮</strong>，因此，不可能再跑一次诱发trap的指令，而是从它<strong>下一条指令</strong>继续执行。abort就比较糟糕了，他甚至<strong>不一定精确知道异常在哪里发生</strong>，程序和任务也没法继续跑下去了。</p>
+<p>​		接下来，书上还有一点关于中断的内容，事实上，中断也分为内外两种，内部中断就是直接由指令int n产生的中断，这类中断比较好处理，用上面的过程就行了；但对于外部中断就没那么乐观了，因为我们拿到的并非直接的中断向量号。下面是CPU处理外部中断的示意图：<img src="/blogOfNoob.github.io/teawith/19536/outInt.jpg" class="" title="outInt"></p>
+<p>​		对外部中断，又分两类：非屏蔽中断和可屏蔽中断，判断是否屏蔽可屏蔽中断是根据<strong>标志位寄存器的IF位</strong>（当<strong>为1</strong>时才发生可屏蔽中断），可以通过cli指令<strong>开屏蔽</strong>，sti指令<strong>关屏蔽</strong>。对于<strong>非屏蔽中断</strong>，通过<strong>NMI</strong>引脚线传入CPU，这类中断据<strong>第89页</strong>的表格，中断向量号为2。而<strong>可屏蔽中断</strong>又更复杂一些，它们产生的信号由<strong>两片级联的8259A</strong>（这是一种<strong>可编程中断控制器</strong>，其实就是一种芯片）通过<strong>INTR</strong>引脚线传入，共15种（其中IRQ15保留）。可屏蔽中断的发生与否除了受上文所述的IF位限制，还受到<strong>IRM</strong>（Interrupt Mask Register，中断屏蔽寄存器）、IRR（中断请求暂存寄存器）和ISR（中断服务寄存器）的影响。		</p>
+<p>​		BIOS初始化8259A时，将IRQ0至IRQ7初始化为向量号08h至0Fh——这其实很坏，因为保护模式下它们已经被占用了。所幸8259A可以编程，我们可以再通过<strong>相应的端口</strong>，利用<strong>out</strong>指令，修改其<strong>IRQ</strong>与向量号的对应，具体的修改方法<strong>书上第91至92页</strong>写的比较清楚了，这里就不再引述了。需要提前搬运过来的是，对主8259A，20h端口是<strong>设置中断向量号</strong>，而21h端口是<strong>设置屏蔽或者将掩码写入IRM</strong>（当对应的位置为0时才发生），同理，对从8259A，A0h设置对应中断向量号，A1h端口设置屏蔽。</p>
+<p>​		8259A产生的可屏蔽中断处理完毕后，还需要再给20h或A0h端口发送<strong>EOI</strong>，将IRR和ISR等进行设置，保证可以继续处理接下来的中断。</p>
+<p>​		不过，上述内容仍然还没有完整地描述整个中断的过程，比如，从中断发生到转向初步的处理发生了什么？中断是怎么返回的？确切地说，我们要去关注其中<strong>堆栈的变化</strong>。</p>
+<p>​		其实中断之后转向处理例程<strong>无非也是一种跳转</strong>（<a href="#chapter1.3.1.4">上面</a>有讲到跳转），既然是跳转，<strong>cs和eip的压栈</strong>是少不了的。不过在此之前，以fault为例，因为我们要返回去<strong>在相同的状态之下</strong>执行对应的指令，所以也需要把<strong>eflags寄存器内的内容</strong>压入栈中。如果这其中涉及到了<strong>不同特权级的转移</strong>（一般来说，是从低到高），那么还需要堆栈切换、<strong>压入原来的ss和esp</strong>、压入eflags、cs、eip。在上述两种情况中，如果我们有错误码（这得根据<strong>第89页</strong>的表格，也就是<strong>表3.8</strong>），最后还应压入错误码。</p>
+<p>​		类似地，返回时我们也是用的ret，不过这里特殊一点，是<strong>iretd</strong>，它还会通过堆栈中保存的原来eflags寄存器的值来还原eflag寄存器的状态，不过还有一些限制，是和<strong>IO保护</strong>相关的，参见<strong>第99页</strong>。</p>
+<p>​		其实到这里为止，我们关于中断的理论部分就讲完了。将要进入到实践部分了，这将带我们回到书上<strong>第155页开始的内容</strong>。</p>
+<h4 id="中断机制：实现"><a href="#中断机制：实现" class="headerlink" title="中断机制：实现"></a><a id="chapter1.3.2.2">中断机制：实现</a></h4><p>​		其实完成一个漂亮的中断机制，从上面的讲述中可以看出，我们需要建立一套中断和异常的处理机制，同时对于外部中断，由于BIOS的设置问题，我们还需要一个例程重新<strong>初始化8259A</strong>，使其能够在保护模式下向CPU输出合适的中断向量号。书上先完成的是初始化8259A的工作。</p>
+<p>​		由于我们的编程必然要更多地在c语言下进行，于是书上封装了<strong>out_byte</strong>和<strong>in_byte</strong>这两个函数（在<strong>lib&#x2F;kliba.asm</strong>中），用以实现通过指定端口向特定外设读写的功能——这也是书上在第7章实现<strong>操纵外设</strong>的诀窍之一。这里书上又新建了一个头文件<strong>proto.h</strong>，用来存放函数声明。</p>
+<p>​		加这么多文件，条理性是强了，但是改Makefile添加依赖的时候就痛苦万分了。好在，gcc给我们提供了一条指令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -M kernel/start.c -I include</span><br></pre></td></tr></table></figure>
+
+<p>​		其中-I这个选项的意思是<strong>指定头文件目录</strong>，在这里，我们的头文件都放在include目录下了，而<strong>-M</strong>会自动给我们生成所需要的依赖：<img src="/blogOfNoob.github.io/teawith/19536/dependency.jpg" class="" title="dependency"></p>
+<p>​		复制到Makefile就行了。</p>
+<p>​		完成初始化8259A后，我们需要搭起我们的中断和异常的处理机制，还是得先<strong>初始化IDT</strong>，这个利用初始化GDT的方式就行了。首先，我们要定义IDT的相关信息。类似地，我们也要<strong>定义门描述符的数据结构</strong>（在protect.h中）。接下来是将相应的内容<strong>加载到IDTR</strong>中，书上通过在汇编代码中<strong>extern idt_ptr</strong>（c代码中这个被宏定义的<strong>EXTERN</strong>实际上什么也没有），从而引入一个外部变量（在c代码里），先在c中预设相应的值，再直接在汇编中：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lidt [idt_ptr]</span><br></pre></td></tr></table></figure>
+
+<p>​		从而将这个位置开始的6个字节加载入IDTR。</p>
+<p>​		初始化完成后，该处理中断或者异常了。从上面理论的部分中，我们知道了在中断发生时堆栈发生的变化，书上这里为了统一化处理，特地为没有错误码的异常push了中断码，然后调用c语言的函数<strong>exception_handler</strong>进行处理。</p>
+<p>​		然后这里书上把之前<a href="#chapter1.1.4"><strong>没有做被调用者保存</strong></a>的disp_str函数又复制了一遍写了个<strong>disp_color_str</strong>，我们自己再手动添加一遍被调用者保存吧（绷不住了，他怎么跑起来的）。</p>
+<p>​		不过我们到现在为止，似乎还没有<strong>添加IDT的表项</strong>，书上的处理方法是，用一个<strong>init_idt_desc</strong>函数处理，这里第三个参数填入的是<strong>对应处理例程的段内偏移量</strong>（通过在汇编中global标记对应的标签，这里实际指向的是汇编中的相应label），然后拆开来填到IDT的两段偏移处。</p>
+<p>​		到这里为止，书上第5章的使命已经基本结束。然而，这个中断并不完全完整——他连嵌套中断都没有实现。这些内容还得在<strong>第6章</strong>才做。同时，第6章还将实现一个获取当前ticks的系统调用（这很重要）。</p>
+<p>​		</p>
+<h4 id="时钟中断和中断嵌套"><a href="#时钟中断和中断嵌套" class="headerlink" title="时钟中断和中断嵌套"></a><a id="chapter1.3.2.3">时钟中断和中断嵌套</a></h4><p>​		这一部分是书上为了实现进程相关的功能（比如调度）而实现的，不过了解他，对于我们的实验也很重要（如果没有时间的概念，我们的20s清屏怎么做呢？）。</p>
+<p>​		书上将外设的初始化放在了<strong>kernel_main</strong>中。</p>
+<p>​		首先，时钟中断属于可屏蔽中断，我们需要打开它，这分两步走，首先是用<strong>sti指令</strong>设置标志寄存器的<strong>IF位</strong>为1从而<strong>打开对可屏蔽中断的接收</strong>，接下来我们还要特定地打开对时钟中断的接收，时钟中断在<strong>主8259A</strong>上处理，所以我们给<strong>21h端口</strong>发送0xFE，将时钟中断在IMR（中断屏蔽寄存器）中的对应位<strong>设置为0</strong>，至此，打开了时钟中断。</p>
+<p>​		亦如上文所述，我们需要在处理完可屏蔽中断后给8259A的20h端口<strong>发送EOI</strong>，不然，将无法处理后续发生的中断。</p>
+<p>​		这里书上还在<strong>iretd之前</strong>设置了TSS的esp0（也就是特权级0下的栈指针寄存器）。因为设置的内容和进程相关的知识有关，所以这里我们只需要解释<strong>为什么要在这里设置</strong>。iretd将会从内核态返回，而下一次从用户态进入内核态时，将会借助于TSS的esp0，所以在iretd之前，必须将TSS的esp0设置为正确的值。</p>
+<p>​		注意，为了不扰乱进程表，时钟中断要<strong>使用内核栈</strong>。</p>
+<p>​		接下来书上还做了<strong>中断嵌套</strong>的处理（利用全局变量）。</p>
+<p>​		这之后，到203页开始，书上又添加了对时钟中断的进一步处理，加入了<strong>进程调度</strong>的内容。紧接着，根据Minix的中断处理机制，整理了相关的中断处理代码。并且引入了<strong>enable_irq和disable_irq</strong>这两个函数（在lib&#x2F;kliba.asm中，虽然这两个函数中只有cli指令，但是通过标志位寄存器的pushf和popf，可以实现状态的调整）用于开关8259A对中断的接收情况。另外，现在添加c的中断处理程序可以直接使用<strong>put_irq_handler</strong>这个函数将<strong>irq_table</strong>对应的位置置为指定的处理例程，而不是去改汇编（因为汇编中已经写了相应的代码，会直接跳到这个数组的对应位）。</p>
+<p>​		本来，应该继续下去去把<strong>系统调用</strong>这一块讲完的，但是这次实验并不需要了解到底发生了什么，而且相关的实现在Lab4更为重要，我会把需要的函数在后面列出来。此外，再不进入IO的部分，别说大伙了，我都嫌烦了。</p>
+<h1 id="工具箱，但是黑盒（IO）"><a href="#工具箱，但是黑盒（IO）" class="headerlink" title="工具箱，但是黑盒（IO）"></a><a id="chapter2">工具箱，但是黑盒（IO）</a></h1><p>​		终于！我们摸到了这次实验的门槛，要正式开始接触IO相关的实现了。更重要的是，接下去我会讲述的内容，基本和实验非常相关了——这将提示我们在哪里去修改我们的代码。</p>
+<h2 id="一次敲击的信息量"><a href="#一次敲击的信息量" class="headerlink" title="一次敲击的信息量"></a><a id="chapter2.1">一次敲击的信息量</a></h2><p>​		我们这次的实验和两个外设有关——键盘和显示器。</p>
+<p>​		不妨按着书上的顺序，来看看一次键盘“敲击”都传达了什么信息吧。</p>
+<h3 id="建立连接"><a href="#建立连接" class="headerlink" title="建立连接"></a><a id="chapter2.1.1">建立连接</a></h3><p>​		作为一种IO外设，键盘向CPU传递信息也是通过中断。所以，我们得先<strong>打开键盘中断</strong>。处理的方法和上面打开时钟中断类似，不过这次我们有了封装好的函数——<strong>enable_irq</strong>，这里传入的参数是<strong>需要屏蔽的IRQ号</strong>。书上用一个<strong>init_keyboard</strong>（在keyboard.c中）函数封装了键盘外设的初始化并放在了<strong>kernel_main</strong>(在main.c中)。</p>
+<p>​		同时，光有中断是不够的，我们还要建立一个键盘中断处理例程<strong>keyboard_handler</strong>，这个函数在keyboard.c中。这里书上让他先只打印一个*号，结果一次按键打印*号后，不管再敲击几次，都不再打印，这就引出了书上关于键盘物理实现的讨论。</p>
+<p>​		直接处理键盘<strong>事件</strong>的是8048芯片和相关的兼容芯片，统称为<strong>键盘编码器</strong>，他们会把一次事件的<strong>信息</strong>——这里我用了两个模糊的描述，是因为之前的“敲击”并不一定等于会引起响应的一次事件，所谓的信息到底是什么则会在下文阐释——发送给与其相连的<strong>键盘控制器</strong>（由8042及与其兼容的芯片组成），后者维护了一个<strong>缓冲区</strong>，将接收到的信息放入这个缓冲区中，只有当缓冲区清空，才继续接收信息。这也就是上面只响应了一次键盘事件的原因。</p>
+<p>​		那么，怎么读取缓冲区中的信息并清空之呢？</p>
+<p>​		上面我们提到过，CPU与这些IO外部设备的通信是通过“端口”的。书上<strong>第245页</strong>的表<strong>7.1</strong>给出了8042与CPU通信的端口，以及行为设置带来的影响，要想清空缓冲区，我们只要用汇编的<strong>in指令</strong>来从<strong>0x60</strong>端口读入信息，而到这里，光盘代码已经封装了一个in_byte函数，我们在参数中传入端口号就能拿到返回的字节了。因此，我们只需要在<strong>keyboard_handler</strong>中调用一个in_byte函数从0x60h端口读入一个字节即可。加入之后，再跑一次，我们将会发现按下再松手后，屏幕上出现了两个*，这说明处理了<strong>两个事件</strong>。</p>
+<h3 id="Make-Code与Break-Code"><a href="#Make-Code与Break-Code" class="headerlink" title="Make Code与Break Code"></a><a id="chapter2.1.2">Make Code与Break Code</a></h3><p>​		考虑一种情况，就是我们平时进行大写使用的一种方法：shift+字母，我们必须同时按下两者才会有大写。因此，除了<strong>按下</strong>，<strong>释放</strong>也应该是一个事件，于是在这其中产生了两次事件，每次事件传送了一次信息，这中间被传送的信息称为<strong>扫描码</strong>。对于除了Pause键以外的其他按键，按下时，发送<strong>Make Code</strong>，松开时，发送<strong>Break Code</strong>。相应的扫描码表参见<strong>书上第247至248页的表7.2</strong>。可以注意到的是，对于<strong>不是E0或E1开头</strong>的按键，他们的Make Code和Break Code大致满足以下条件：</p>
+<p>​		<strong>Break Code &#x3D; Make Code | 0x80</strong>;</p>
+<p>​		这就给我们的实现带来了一些启示：进行特判排除不一般的扫描码后，我们可以用得到的扫描码<strong>与</strong>上0x80来判断它是Make Code还是Break Code，事实上，书上也是这么做的。</p>
+<p>​		当然了，谁都不想一个一个扫描码去硬判断，好在这些扫描码是连续的，我们可以用<strong>数组</strong>来存放<strong>每个Make Code对应的按键</strong>，相应的定义在<strong>keymap.h</strong>里。另外，<strong>keyboard.h</strong>中也用宏定义了一些非常方便的量，比如上述的0x80。</p>
+<p>​		从上面的描述中，我们已经可以实现单一按键的处理，但是对于组合键，比如shift和其他按键同时按着的配合，又该怎么办呢？</p>
+<p>​		书上（现实中大概也是如此）采取了一个缓冲区的方法，就是CPU读入0x2A（左shift对应的Make Code）这类扫描码时，先<strong>存到缓冲区</strong>里，根据进一步的处理来判断。</p>
+<p>​		所以，我们实现处理的时候，也没必要每次只处理一个字符，而是封装一个函数，用以从设定的缓冲区中读取字节——这样我们可以在一次处理过程中处理多个扫描码。不过，由于按下不同的键仍然分属不同的事件，所以我们仍然不大可能一次就处理组合键的问题。</p>
+<p>​		还有另一个问题，那就是像F1这种<strong>非打印字符</strong>怎么办。书上采用了一种很巧妙的做法。扫描码实际上只占8位，但我们不一定要局促地按照8位来写我们每个Make Code对应的按键。书上通过一种类似于<strong>掩码</strong>的形式，将所有非打印字符都加上一个FLAG_EXT（其数值为0x0100）（参见keymap.h和keyboard.h），到字符处理时，通过扫描码<strong>按位与</strong>0x0100，如果不为0，则为非打印字符，从而能做进一步地处理。<strong>位运算</strong>的思路其实很有用。</p>
+<p>​		至此，书上先通过keyboard.c中的<strong>keyboard_read</strong>函数，对扫描码进行了一些简单的处理和输出，但是我们现在没必要去细究它，可以只是稍微看一下这个函数现在做了什么，因为这远非最终的代码结构。</p>
+<p>​		</p>
+<h2 id="操纵显存"><a href="#操纵显存" class="headerlink" title="操纵显存"></a><a id="chapter2.2">操纵显存</a></h2><p>​		按照书上的顺序，书上是讲了TTY和console，不过这部分理解起来，概念真的非常含混不清——而且事实上我们后续的实现中，完全可以不用考虑多终端的事情。只要知道在ORANGE的代码体系里面，console起了<strong>主要的操纵显存的作用</strong>就行了。</p>
+<h3 id="显示内容与显示范围"><a href="#显示内容与显示范围" class="headerlink" title="显示内容与显示范围"></a><a id="chapter2.2.1">显示内容与显示范围</a></h3><p>​		显存并不完全是简单的字符记录——我们之前的实验中实现过不同的字色——甚至包括<strong>前景色和背景色</strong>。因此，以我们实验环境下的显存为例，低8位是字符本身，高4位是背景色，中间4位是前景色。对于前景色和背景色的4位而言，从低到高分别是B、G、R和高亮设置。比较舒服的是，后面的成品代码已经给出了显存的相关数据，以及操作显存的相关方法，编程时直接调用即可。</p>
+<p>​		然而，以实验环境下的显存为例，其大小足足有0x8000，可是我们的屏幕就这么大，该怎么去决定显示哪块区域呢？这是由对应外设上的寄存器决定的。要操纵这些寄存器的值，还得通过相对应的端口，相关的端口信息在<strong>第266页上的表7.3</strong>有给出。不过我们编程的时候也不需要去考虑这些——ORANGE帮我们封装好了我们这次需要用到的内容，我们只需要修改c代码中某些变量的值即可。</p>
+<p>​		值得注意的是，这张表中的CRT Controller寄存器中的数据寄存器中，恰好有<strong>与游标（cursor）和显示始址相关的内容</strong>，当然，这就是我上一段说的封装好的端口操作——通过<strong>flush函数</strong>和其调用的<strong>set_cursor与set_video_start_address</strong>函数完成游标位置和显示始址的设置。</p>
+<p>​		据此，书上完成了调整游标和手动滚屏的代码实现——不过我们只需要前者。</p>
+<h3 id="多TTY的构建"><a href="#多TTY的构建" class="headerlink" title="*多TTY的构建"></a><a id="chapter2.2.2">*多TTY的构建</a></h3><p>​		接下来这部分，对我们的实验还是有一定影响的，但我后面第三部分中还会梳理一下函数的关系，所以也可以不怎么看</p>
+<p>​		这里实现了一个<strong>TTY任务</strong>——按照这本书的语境，<strong>目前</strong>就是一个进程。这个任务所做的工作在<strong>tty.c的task_tty函数</strong>中有所体现。简单来说，在tty任务中先初始化各个tty——各个tty再初始化自己负责的IO外设（当然，共用的外设在<strong>kernel_main</strong>中就初始化完成了），这里就只有显示屏一个，具体来说，初始化显示屏时设置了控制台的一些信息。然后就进入轮询。由于进程调度的存在，因此不用担心死循环。tty<strong>任务</strong>在自己分得的时间内会不断去轮询各个TTY，如果当前TTY和当前console一致，那就从<strong>内存中的</strong>键盘缓冲区读取数据（调用<strong>keyboard_read函数</strong>，再将信息交给<strong>in_process函数</strong>），再看是否进行输出。</p>
+<p>​		之所以我还要把这部分挑出来讲，一个是到此为止我们的键盘事件处理并没有完成，后续要想修改还得了解这个框架。另外一方面是，这边开始实现了一些职责的分离，keyboard_read<strong>将扫描码转化为后续处理所需要的key</strong>，在后续的<strong>in_process函数</strong>中进行分析，如果有需要，再放入内存中的键盘缓冲区，写的时候调用<strong>out_char</strong>函数进行打印。</p>
+<p>​		然后就是一个需要我们修改的部分，这里他实现了多console，不过对于我们来说，没啥必要。这里还实现了Alt + Fx切换控制台的功能。以及到这里他还添加了<strong>自动屏幕滚动</strong>的功能（比较坑人的是只实现了一半，也就是输入字符超出屏幕显示范围会向下滚屏，但是没实现删除的时候屏幕自动向上滚动）。</p>
+<p>​		</p>
+<h2 id="有用但残缺"><a href="#有用但残缺" class="headerlink" title="有用但残缺"></a><a id="chapter2.3">有用但残缺</a></h2><p>​		书上接下来做的是键盘处理的进一步完善，这部分的代码很有用——但不一定完全符合我们的需求。</p>
+<p>​		一个处理是<strong>回车和退格</strong>，这部分是先用<strong>in_process</strong>函数进行处理——这俩都是<strong>非打印字符</strong>，然后转化为一个字符放进缓冲区中等待输出。在<strong>out_char函数</strong>中完成输出。不过这个退格没完全做好，当换行再退格，甚至不能退到上一格的最后（这也等着我们去实现）。</p>
+<p>​		另外一个是<strong>Caps Lock</strong>大写锁定以及Num Lock、Scroll Lock的实现——实际上我们只需要第一个就行了。他们之所以被放到这里，是因为书上的实现还涉及小灯——不过这和我们的实验没有关系。事实上，我们还可以惊喜地发现，书上的代码还帮我们完全实现了第2点：当我们<strong>大写锁定和shift组合使用时</strong>，会打印出小写字符。这一部分甚至实现了虚空的小键盘。</p>
+<p>​		接下来是<strong>区分用户进程和任务</strong>，这一部分倒是方便我们修改了——比如把自带的用户进程踢出调度队列。	</p>
+<p>​		最后是实现printf系统调用，这一部分也没啥用。</p>
+<h1 id="正式修改"><a href="#正式修改" class="headerlink" title="正式修改"></a><a id="chapter3">正式修改</a></h1><p>​		首先我们得找到光盘里一份能输出的代码，我用了chapter 7的o。</p>
+<h2 id="我们有什么"><a href="#我们有什么" class="headerlink" title="我们有什么"></a><a id="chapter3.1">我们有什么</a></h2><p>​		接下来我们得明确两件事：我们实现了什么，当前的逻辑是怎么样的（或者说必要的框架代码是什么）。</p>
+<h3 id="实现了什么"><a href="#实现了什么" class="headerlink" title="实现了什么"></a><a id="chapter3.1.1">实现了什么</a></h3><p>​		不妨先按照<a href="#chapter1.2">1.2节的内容</a>修改一下Makefile然后跑起来，看看我们<strong>已经实现了什么</strong>。</p>
+<p>​		经过测试（很显然<strong>查找模式和撤回这两大功能光盘的代码都没实现</strong>），基本模式下的功能实现情况如下：</p>
+<p>​		1、从屏幕左上角开始，以白色显示键盘输入的字符。可以输入并显示 a-z,A-Z 和 0-9 字符。 ——<strong>完全实现</strong></p>
+<p>​		2、大小写切换包括 Shift 组合键以及大写锁定两种方式。大写锁定后再用 Shift 组合键将会输入小写字母——<strong>完全实现</strong> </p>
+<p>​		3、 支持回车键换行。——<strong>完全实现</strong></p>
+<p>​		4、支持用退格键删除输入内容。 ——<strong>实现了一部分</strong>，但是回车再退格会回到上一行<strong>物理上的最右边</strong>。</p>
+<p>​		5、支持空格键和 Tab 键（4 个空格，可以被统一的删除） ——<strong>实现了空格没实现TAB</strong>。</p>
+<p>​		6、每隔 20 秒左右, 清空屏幕。输入的字符重新从屏幕左上角开始显示。——<strong>完全没实现</strong>。</p>
+<p>​		7、要求有光标显示, 闪烁与否均可, 但⼀定要跟随输入字符的位置变化。 ——<strong>完全实现</strong>。</p>
+<p>​		8、不要求支持屏幕滚动翻页，但输入字符数不应有上限。 ——支持了屏幕滚动翻页。</p>
+<p>​		9、不要求支持方向键移动光标。——没实现也不用实现。</p>
+<p>​		看起来，似乎还挺乐观？</p>
+<h3 id="手头的框架"><a href="#手头的框架" class="headerlink" title="手头的框架"></a><a id="chapter3.1.2">手头的框架</a></h3><p>​		下一步是看看我们手头有什么。打开这么大的一个代码文件，很多人，包括我，可能都是很迷茫的，不知道从哪里入手，所以我这里再用一张图归纳一下可能会较大影响到我们修改的书上代码（红笔写的是我们需要实现的内容的一部分）实现：</p>
+<img src="/blogOfNoob.github.io/teawith/19536/structure.jpg" class="" title="结构">
+
+<p>​		当我们触发键盘事件后，相应的<strong>扫描码</strong>被8048发给8042，<strong>存储到8042的缓冲区中</strong>，8042向CPU发出中断，进入中断处理例程，中断处理例程<strong>调用keyboard_handler函数从8042的缓冲区中读取扫描码到CPU的缓冲区中</strong>，完成键盘中断处理。</p>
+<p>​		而在自己被分配的时间中，<strong>task_tty先是进行初始化</strong>——这只进行一次。然后<strong>进入轮询</strong>，<strong>对每个TTY</strong>，先调用<strong>tty_do_read</strong>，进入后先<strong>验证当前TTY和console是否对应</strong>，如果否，返回。如果是，调用keyboard_read函数，检测<strong>内存缓冲区</strong>，从中取出扫描码，分析后<strong>转化为一个32位的key</strong>传给in_process函数做进一步的处理，这个函数中，如果遇到可打印字符就直接送入缓冲区，如果是非打印字符，就进一步分析，之后碰到退格和回车就转化为对应的字符，然后放入缓冲区。再返回。在task_tty中<strong>调用tty_write函数</strong>，如果缓冲区内有需要处理的key，就从缓冲区中取出key，<strong>转化为char</strong>，<strong>交给out_char函数进行处理</strong>。</p>
+<h2 id="先从清屏开始"><a href="#先从清屏开始" class="headerlink" title="先从清屏开始"></a><a id="chapter3.2">先从清屏开始</a></h2><p>​		如果看官是直接跳到这查看的，那么在上一步——查看已有实现中，您很可能会看到乱码，这是由于disp_str的错误引起的（实际上disp_color_str也有这个问题，但没调用过）（参见<a href="#chapter1.1.4">这里</a>）。虽然可能对后续实验没影响，但是这毕竟操作了ebx基址寄存器，说不定会影响寻址？建议还是改过来。</p>
+<p>​		然而，屏幕上这个时候已经有了许多输出，所以我们不妨先实现清屏。</p>
+<p>​		当然，也可以不从清屏开始——从清屏开始的话，后续要不断调整这个清屏函数，这只是我自己的一个实现顺序，具体怎么样还得看自己的思路。</p>
+<h3 id="消灭用户进程和多TTY"><a href="#消灭用户进程和多TTY" class="headerlink" title="*消灭用户进程和多TTY"></a><a id="chapter3.2.1">*消灭用户进程和多TTY</a></h3><p>​		如果搬运的是o的代码，那么我们可以看到屏幕上持续不断地进行输出，这很不好。</p>
+<p>​		我们可以在main.c里面找到<strong>TestA、TestB、TestC这三个函数</strong>，他们是造成持续输出的罪魁祸首。</p>
+<p>​		当然，我们可以只是注释掉他们的打印函数，但是仅此而已的话，他们仍然会和我们的TTY任务争抢时间片。我们这里更可以考虑将他们“消灭”。</p>
+<p>​		这里o的代码的可贵之处就体现出来了，因为<strong>区分了任务和用户进程</strong>，所以我们可以低成本地去进行修改。</p>
+<p>​		改两个地方，一个是<strong>include文件夹下的proc.h</strong>，找到<strong>NR_PROCS</strong>，将其值改为0，表示没有用户进程。</p>
+<p>​		另一个地方是<strong>kernel文件夹下的global.c</strong>，找到这样一行：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PUBLIC  TASK    user_proc_table[NR_PROCS] =&#123;</span><br><span class="line">    ......<span class="comment">//这里省略一些内容，这些内容可以都注释掉</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>​		注释相应的内容，再检查一下kernel_main这个函数中的初始化进程表的部分，看看有无越界，这样就算清理完毕了。</p>
+<p>​		所有TTY任务的初始化都在task_tty里被调用，是一个循环，我们可以Ctrl点击<strong>TTY_END</strong>这个宏，找到其定义，是TTY _START加上一个数<strong>NR_CONSOLES</strong>，我们将之改为1即可。</p>
+<p>​		当然，还有一些其他的工作要做，比如修改init_screen函数中的逻辑。</p>
+<p>​		不过其实不消灭多TTY也不是不行，这样只是为了使用一个显存的大小（实际上肯定用不到这么大）。</p>
+<h3 id="清屏"><a href="#清屏" class="headerlink" title="清屏"></a><a id="chapter3.2.2">清屏</a></h3><p>​		到这里，基本上该完成的调整都做完了（实际上存疑）。我们可以去实现一个清屏了。注意，显存的单位实际上应该被看做是16位的，我们清屏的时候只应该修改低8位——那是和ascii码有关的数值，至于该改成啥，就不说了。</p>
+<p>​		此外，我们还应该重置游标和显示始址，这两个数值的参数，CONSOLE这个结构体里都有，修改对应参数后，调用封装好的<strong>flush函数</strong>调整游标和始址即可。</p>
+<h3 id="时间的灾难"><a href="#时间的灾难" class="headerlink" title="时间的灾难"></a><a id="chapter3.2.3">时间的灾难</a></h3><p>​		现在既然我们已经有了一定的输入能力，何不验证一下20s清屏能否实现？</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> lastTick = get_ticks(); <span class="comment">//不严谨的话sys_get_ticks()也可以，而且更直接</span></span><br><span class="line"><span class="keyword">while</span>(<span class="number">1</span>)&#123; <span class="comment">/*这是之前的框架*/</span></span><br><span class="line">    <span class="keyword">if</span> ((get_ticks() - lastTick) * HZ &gt; <span class="number">20000</span>)&#123; <span class="comment">/*HZ这个宏的意思是CPU频率,1tick = 1/HZ*/</span></span><br><span class="line">      	clean_screen(...);<span class="comment">//参数略去</span></span><br><span class="line">        lastTick = get_ticks();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    ...... <span class="comment">//一些其他处理</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​		看上去逻辑没啥问题，不是吗？</p>
+<p>​		实际跑起来，可能发现清屏的时间有些不大对劲？不是20s左右？（如果是的话可以跳过这一部分到下个标题）</p>
+<p>​		时间都去哪了？</p>
+<p>​		实际上，这可能和bochs有关，它模拟了一台电脑，但是bochs的时间是正确的时间吗？ORANGE的一个”tick”，<strong>在计算上</strong>等同于10ms，可是物理上似乎并不等于10ms？</p>
+<p>​		是的，这和bochs中的某个设置有关，我们应当检查<strong>bochsrc</strong>中有无下面这一行，原因稍后解释：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">clock: sync=realtime</span><br><span class="line"># 备注：上面这个写both应该也可以</span><br></pre></td></tr></table></figure>
+
+<p>​		如果我们并不设置，那么bochs的这个机子，它的时钟就受到我们电脑的IPS（每秒执行指令数）影响，这其中的问题不言自明：我们的计算机越快，bochs的时钟就越快，相关选项的解释我复制如下：</p>
+<p><em><strong>sync</strong>: This defines the method how to synchronize the Bochs internal time with realtime. With the value ‘none’ the Bochs time relies on the IPS value and no host time synchronization is used. The ‘slowdown’ method sacrifices performance to preserve reproducibility while allowing host time correlation. The ‘realtime’ method sacrifices reproducibility to preserve performance and host-time correlation. It is possible to enable both synchronization methods.</em></p>
+<p>​		因此，我们可以将同步设置为<strong>realtime或者both</strong>来使bochs的时钟和实际的保持一致，但是对他们的影响，我没有具体研究过，就不发表评论了。</p>
+<h2 id="一步一个脚印，但是速通"><a href="#一步一个脚印，但是速通" class="headerlink" title="一步一个脚印，但是速通"></a><a id="chapter3.3">一步一个脚印，但是速通</a></h2><p>​		接下来，我会把速度提上来——因为接下来涉及具体实现细节的比较多，并不方便显式给出，只能写一下自己的思路。</p>
+<h3 id="基本功能速通"><a href="#基本功能速通" class="headerlink" title="基本功能速通"></a><a id="chapter3.3.1">基本功能速通</a></h3><p>​		我们可以先实现TAB的<strong>\t</strong>，因为如果先完善退格的话，实现TAB的时候还是得去改退格。</p>
+<p>​		因此，我们可能需要一个区域来<strong>记录和文本相关的信息</strong>——不管他是什么，不然怎么区分TAB和SPACE的空格呢？当然，加入这个区域的话，我们<strong>清屏的时候</strong>也得维护一下相应的内容。</p>
+<p>​		然后是退格，这也不难，因为我们已经有了一个区域，每次退格时<strong>取出最新的ascii并做相应的处理即可</strong>。</p>
+<p>​		结束了，基本功能完成了。</p>
+<h3 id="查找功能速通"><a href="#查找功能速通" class="headerlink" title="查找功能速通"></a><a id="chapter3.3.2">查找功能速通</a></h3><p>​		由要求不难得知，我们有三种模式，分别是<strong>插入模式、查找-插入模式、查找-显示模式</strong>，因此，我们需要一个量来标记。</p>
+<p>​		查找模式的文本可以和插入的存在一个地方，也可以不存在一个地方，前者需要额外维护一些标记量。</p>
+<p>​		找到in_process中<strong>对ESC处理</strong>的部分（如果没有就自己加一个），加上一些操作，包括模式的转化和<strong>退出查找模式时的处理</strong>。</p>
+<p>​		ENTER在查找-插入模式下应该有新的功能。</p>
+<p>​		注意，查找-显示模式下应当<strong>屏蔽除了ESC以外的所有键盘IO</strong>。</p>
+<p>​		一些实现细节就不列出来了，于是查找功能也完成了。</p>
+<h3 id="撤回功能速通"><a href="#撤回功能速通" class="headerlink" title="撤回功能速通"></a><a id="chapter3.3.3">撤回功能速通</a></h3><p>​		首先我们需要捕捉CTRL + Z，不妨先看看这种按键情况下<strong>会不会有输出</strong>，从而确定这个key到底在in_process的哪里被处理。</p>
+<p>​		然后看一看keyboard_read有没有一些针对CTRL的特殊处理和衍生处理，比如位运算，从而<strong>确定判断CTRL +  Z</strong>的策略，我们可以通过检测到后就直接返回，运行时看有没有输出，来检查我们做的对不对。注意CTRL有左右之分。</p>
+<p>​		撤回本质是逆操作，于是我们显然可能也要维护一个区域<strong>记录和操作相关的信息</strong>。既然如此，清屏时也要做相应的处理。另外，<strong>\b并不是一个有用的操作信息</strong>。</p>
+<p>​		好了，撤回功能也完成了。</p>
+<h1 id="lab3问答整理"><a href="#lab3问答整理" class="headerlink" title="lab3问答整理"></a><a id="chapter4">lab3问答整理</a></h1><p>​		这次看了一下，一些问题的情境是连续的，所以整理时不一定按照问题的顺序去整理，而是取出其中类似问题域的问题做一个整合。</p>
+<p>​		</p>
+<h2 id="中断（通用）"><a href="#中断（通用）" class="headerlink" title="中断（通用）"></a><a id="chapter4.1">中断（通用）</a></h2><p>​		<strong>相关问题：</strong></p>
+<p>​		第2题：解释中断类型码。</p>
+<p>​		第12题：中断的分类，并举例不同类型的中断。</p>
+<p>​		第13题：中断与异常的区别? </p>
+<p>​		第18题：异常的分类? </p>
+<p>​		第21题：中断异常共同点（至少两点），不同点（至少三点）</p>
+<h3 id="中断类型码"><a href="#中断类型码" class="headerlink" title="中断类型码"></a><a id="chapter4.1.1">中断类型码</a></h3><p>​		<strong>相关问题：</strong></p>
+<p>​		第2题：解释中断类型码。</p>
+<p>答：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int n</span><br></pre></td></tr></table></figure>
+
+<p>中断类型码是上面这个指令中的n，就是中断号，表示中断的类型。比如int 10h中的10h就是一个中断类型码，表示BIOS中断。</p>
+<h3 id="中断的分类"><a href="#中断的分类" class="headerlink" title="中断的分类"></a><a id="chapter4.1.2">中断的分类</a></h3><p>​		<strong>相关问题：</strong></p>
+<p>​		第12题：中断的分类，并举例不同类型的中断。</p>
+<p>答：按照中断源来分，可以分为三类，一类是由计算机硬件异常或故障引起的中断，也称为<strong>内部异常中断</strong>（例子有Machine Check）；另一类的中断是由程序中执行了中断指令引起的，也称为<strong>软中断</strong>，由程序员通过INT或INT3指令触发，通常当做trap处理，可以用来实现<strong>系统调用</strong>；还有一类是外部设备(如输入输出设备)请求引起的中断，也称为<strong>外部中断或I&#x2F;O中断</strong>。这其中，外部中断可以进一步分为<strong>可屏蔽中断与不可屏蔽中断</strong>。</p>
+<p>​		还有一种分法是分为两类：<strong>中断和异常</strong>。中断是来自CPU以外的事件引起的中断（<strong>例子</strong>有I&#x2F;O中断、时钟中断、控制台中断），而异常来自CPU的内部事件或者由程序执行中的事件引起（例子有系统调用、缺页中断、双重错误）。</p>
+<p>​		</p>
+<h3 id="异常的分类"><a href="#异常的分类" class="headerlink" title="异常的分类"></a><a id="chapter4.1.3">异常的分类</a></h3><p>​		<strong>相关问题：</strong></p>
+<p>​		第18题：异常的分类?（PPT里的标注疑似有问题，我改过来了）</p>
+<p>答：异常可以分为三类：<strong>Fault，Trap和Abort</strong>，这可以根据<strong>eip寄存器中保存的值</strong>进行划分。</p>
+<p>​		Fault，是一种可被更正的异常，而且一旦被更正，程序可以不失连续性地继续执行。eip寄存器中所存储的返回地址是产生fault的指令的地址。Fault如果<strong>可以被修复就继续</strong>，否则会转化为终止，并进入下一步。</p>
+<p>​		Trap，一种在发生trap的指令执行之后立即被报告的异常，它也允许程序或任务不失连续性地继续执行。eip中所存储的返回地址是<strong>产生trap的指令之后的那条指令</strong>。Trap，顾名思义，是有意而为之的异常，是明知有套还往里钻，通常是可以被纠正的，其最常见的用途就是操作系统的系统调用。</p>
+<p>​		Abort，不总是报告精确异常发生位置的异常，不允许程序或任务继续执行，而是用来报告严重错误的。它是<strong>不可恢复的致命错误造成的结果</strong>，不能在eip中保存引起异常的指令所在的确切位置。终止处理程序将会<strong>将控制直接交给系统或者说是系统的终止应用程序</strong>而不是引发终止的引用程序。</p>
+<h3 id="中断与异常的异同"><a href="#中断与异常的异同" class="headerlink" title="中断与异常的异同"></a><a id="chapter4.1.4">中断与异常的异同</a></h3><p>​		<strong>相关问题：</strong></p>
+<p>​		第13题：中断与异常的区别? </p>
+<p>​		第21题：中断异常共同点（至少两点），不同点（至少三点）</p>
+<p>答（这里按照21题的标准回答）（PPT上这个回答的语境中好像中断只是指外部中断）：</p>
+<p>​		<strong>相同点：</strong>中断和异常都是<strong>程序执行过程中的强制性转移</strong>，转移到相应的处理程序。它们都是软件或者硬件<strong>发生了某种情形而通知处理器</strong>的行为。</p>
+<p>​		<strong>不同点：</strong> </p>
+<p>​		<strong>第一</strong>，外部中断，是CPU所具备的功能。通常因为“硬件”而随机发生；而异常，是“软件”运行过程中的一种开发过程中没有考虑到的程序错误。</p>
+<p>​		<strong>第二</strong>，中断是CPU暂停当前工作，有计划地去处理其他的事情，中断的发生一般是可以预知的，处理的过程也是事先制定好的，处理中断时程序是正常运行的；而异常是CPU遇到了无法响应的工作，而后进入一种非正常状态，异常的出现表明程序存在缺陷。</p>
+<p>​		<strong>第三</strong>，从中断和异常的发生原因来看，中断是<strong>来自处理器外部的I&#x2F;O设备的信号</strong>的结果，它不是由指令流中某条指令执行引起的，从这个意义上讲，它是<strong>异步</strong>的，是来自指令流之外的；异常是执行当前指令流中的某条指令的结果，是来自指令流内部的，从这个意义上讲，异常都是<strong>同步</strong>的。</p>
+<p>​		<strong>第四</strong>，从<strong>返回点的角度</strong>来说，中断只是在正常的工作流之外执行额外的操作，之后继续做没做完的活，处理程序结束后返回到原指令流的下一条指令并继续执行；异常则有多种分类，trap和中断类似，处理程序结束后返回到原指令流的下一条指令并继续执行；对于<strong>可修复的fault</strong>，由于是在上一条指令执行过程中发生，因此修复fault后，会<strong>重新执行引发fault的指令</strong>；对于不可修复fault或者abort，则不会再返回。</p>
+<p>​		<strong>第五</strong>，中断是由于当前程序无关的中断信号触发的，CPU对中断的响应是被动的，且与CPU模式无关。既可以发生在用户态，又可以发生在核心态；异常是由CPU控制单元产生的，大部分异常<strong>发生在用户态</strong>。</p>
+<p>​		</p>
+<h2 id="实模式下的中断处理"><a href="#实模式下的中断处理" class="headerlink" title="实模式下的中断处理"></a><a id="chapter4.2">实模式下的中断处理</a></h2><p>​		<strong>相关问题</strong>：</p>
+<p>​		第1题：解释中断向量 </p>
+<p>​		第3题：解释中断向量表 </p>
+<p>​		第4题：实模式下中断程序地址如何得到？</p>
+<p>​		第6题：中断向量的地址如何得到? </p>
+<p>​		第7题：实模式下如何根据中断向量的地址得到中断程序地址? </p>
+<p>​		第20题：中断向量表中，每个中断有几个字节?里面的结构是什么?</p>
+<h3 id="中断向量与中断向量表"><a href="#中断向量与中断向量表" class="headerlink" title="中断向量与中断向量表"></a><a id="chapter4.2.1">中断向量与中断向量表</a></h3><p>​		<strong>相关问题</strong>：</p>
+<p>​		第1题：解释中断向量 </p>
+<p>​		第3题：解释中断向量表 </p>
+<p>​		第20题：中断向量表中，每个中断有几个字节?里面的结构是什么?</p>
+<p>答：<strong>中断向量</strong>为<strong>4字节</strong>，存储相应的中断处理程序的起始地址（包括段基址和偏移量，<strong>低2字节为偏移量</strong>，<strong>高2字节为段地址</strong>）。</p>
+<p>​		中断向量表是8086系统内存中<strong>最低端1K字节空间</strong>，它的作用就是按照中断类型号从小到大的顺序存储<strong>共256个中断向量。</strong></p>
+<h3 id="实模式下获取中断处理程序的入口"><a href="#实模式下获取中断处理程序的入口" class="headerlink" title="实模式下获取中断处理程序的入口"></a><a id="chapter4.2.2">实模式下获取中断处理程序的入口</a></h3><p>​		<strong>相关问题</strong>：</p>
+<p>​		第4题：实模式下中断程序地址如何得到？</p>
+<p>​		第6题：中断向量的地址如何得到? </p>
+<p>​		第7题：实模式下如何根据中断向量的地址得到中断程序地址? </p>
+<p>答（这里直接回答第4和第7题，顺带就能回答第6题）：</p>
+<p>​		首先由于中断向量是4个字节，通过<strong>中断向量号×4</strong>（因为中断向量表直接从地址为0开始，所以这里省去了加0）即可拿到存放中断向量的首地址。</p>
+<p>​		然后<strong>从低2字节得到偏移量，从高2字节得到处理例程的段地址</strong>。直接用实模式的寻址方式就能得到中断处理程序的入口地址。</p>
+<h2 id="保护模式下的中断处理"><a href="#保护模式下的中断处理" class="headerlink" title="保护模式下的中断处理"></a><a id="chapter4.3">保护模式下的中断处理</a></h2><p>​		<strong>相关问题：</strong></p>
+<p>​		第5题：保护模式下中断程序地址如何得到?</p>
+<p>​		第8题：解释中断描述符。</p>
+<p>​		第9题：保护模式下中断描述符表如何得到?</p>
+<p>​		第10题：保护模式下中断门如何得到? </p>
+<p>​		第11题：保护模式下如何根据中断门得到中断处理程序地址? </p>
+<p>​		第16题：IDT 是什么，有什么作用?</p>
+<p>​		第17题：IDT 中有几种描述符?</p>
+<h3 id="中断描述符与IDT"><a href="#中断描述符与IDT" class="headerlink" title="中断描述符与IDT"></a><a id="chapter4.3.1">中断描述符与IDT</a></h3><p>​		<strong>相关问题：</strong></p>
+<p>​		第8题：解释中断描述符。</p>
+<p>​		第16题：IDT 是什么，有什么作用?</p>
+<p>​		第17题：IDT 中有几种描述符?</p>
+<p>答：<strong>中断描述符</strong>为连续的8个字节，描述<strong>保护模式</strong>下的异常和中断的处理例程的<strong>入口和相关属性</strong>，除了有段选择子（用于进一步取得段基址和限长）和偏移量外，还有许多属性和类型位（具体结构的图片和信息参见<a href="#chapter1.3.2.1">这里</a>）。</p>
+<p>​		<strong>IDT</strong>是保护模式下存储中断描述符的一种数据结构，其作用和实模式下的中断向量表类似。</p>
+<p>​		IDT中的中断描述符有3类：<strong>任务门、中断门和自陷门</strong>。</p>
+<h3 id="保护模式下获取中断处理程序入口"><a href="#保护模式下获取中断处理程序入口" class="headerlink" title="保护模式下获取中断处理程序入口"></a><a id="chapter4.3.2">保护模式下获取中断处理程序入口</a></h3><p>​		<strong>相关问题：</strong></p>
+<p>​		第5题：保护模式下中断程序地址如何得到?</p>
+<p>​		第9题：保护模式下中断描述符表如何得到?</p>
+<p>​		第10题：保护模式下中断门如何得到? </p>
+<p>​		第11题：保护模式下如何根据中断门得到中断处理程序地址? </p>
+<p>答（直接回答第5题）：</p>
+<p>​		首先，我们先从<strong>IDTR</strong>寄存器中获取到中断描述符表对应的段基址和段限长，这就<strong>得到了中断描述符表</strong>。</p>
+<p>​		然后，我们用<strong>中断类型码×8</strong>得到相应的中断描述符的存储起始地址的偏移量，这就<strong>得到了中断类型码对应的中断门</strong>。</p>
+<p>​		最后，我们<strong>从中断门中得到段选择符和偏移量</strong>，<strong>以段选择符为段选择子</strong>，再根据第2位的情况，从GDT或LDT得到相应的段描述符，结合偏移量，<strong>得到相应中断处理程序的起始地址</strong>。</p>
+<h2 id="实模式和保护模式下的中断处理的差别"><a href="#实模式和保护模式下的中断处理的差别" class="headerlink" title="实模式和保护模式下的中断处理的差别"></a><a id="chapter4.4">实模式和保护模式下的中断处理的差别</a></h2><p>​		<strong>相关问题：</strong></p>
+<p>​		第14题：实模式和保护模式下的中断处理差别</p>
+<p>答（这个问题PPT上没有，我试着概括了一下）：</p>
+<p>​		<strong>中断向量表&#x2F;IDT的获取</strong>：实模式下，中断向量表直接从0号地址开始；保护模式下，则要<strong>从IDTR中获取IDT</strong>。这也意味着IDT可以在内存空间中浮动。</p>
+<p>​		<strong>中断向量&#x2F;中断描述符的获取</strong>：实模式下，中断向量的地址只需要（用0加上）<strong>中断向量号×4</strong>即可得到，保护模式下则需要<strong>用IDT的起始地址加上中断类型码×8</strong>才能得到中断描述符。</p>
+<p>​		<strong>中断处理程序起始地址的获取</strong>：实模式下，只要拿到中断向量，即可从其高2字节得到段地址，低2字节得到偏移量，计算出中断处理程序的起始地址。保护模式下，拿到中断描述符后，还需要得到段选择子去进一步取出相应的段描述符，再根据门描述符给出的偏移量，得到中断处理程序的起始地址。</p>
+<p>​		中断处理的丰富化：实模式下，中断处理时只是跳转到对应的地址进行相应的处理，之后返回；保护模式下通过增加门，附带了更多信息，实现了更多的处理可能（实际上中断门和陷阱门的情况仍然和实模式差不多）。</p>
+<p>​		跳转过程的差别：保护模式有特权级的概念，跳转过程中可能会出现<strong>特权级检查和堆栈切换</strong>（可以参见<a href="#chapter1.3.1">这里</a>）。</p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a><a id="chapter4.5">其他</a></h2><h3 id="键盘组合键的识别"><a href="#键盘组合键的识别" class="headerlink" title="键盘组合键的识别"></a><a id="chapter4.5.1">键盘组合键的识别</a></h3><p>第15题：如何识别键盘组合键（如 Shift+a）是否还有其他解决方案?</p>
+<p>答：ORANGE’S最后采取的方案是：对于扫描码，用全局数组存储Make Code对应的案件的相关值（可能是自己定义的宏），并设置缓冲区，若出现shift，control等按键，根据其break code与make code的情况，设置相应的标志位，用于与其他按键协作（利用位运算），之后进一步分析。</p>
+<p>ORANGE’S之前提到的方案：设置一个或多个量存储一些特定的读到的值（比如shift）。</p>
+<h3 id="用户态和内核态的特权级"><a href="#用户态和内核态的特权级" class="headerlink" title="用户态和内核态的特权级"></a><a id="chapter4.5.2">用户态和内核态的特权级</a></h3><p>第19题：用户态和内核态的特权级分别是多少? </p>
+<p>答：用户态的特权级是3，内核态的特权级是0。</p>
+<p><strong>To be continued…</strong></p>
+</article><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/blogOfNoob.github.io/teawith/35878.html" title="OSLab4随笔"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">OSLab4随笔</div></div></a></div><div class="next-post pull-right"><a href="/blogOfNoob.github.io/teawith/21438.html" title="nasm拾遗"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">nasm拾遗</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/blogOfNoob.github.io/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Mad Hatter</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/blogOfNoob.github.io/archives/"><div class="headline">Articles</div><div class="length-num">8</div></a><a href="/blogOfNoob.github.io/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/blogOfNoob.github.io/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">萌新一枚，随手记记</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7%E7%AE%B1%EF%BC%8C%E4%BD%86%E6%98%AF%E9%BB%91%E7%9B%92%EF%BC%88%E5%9C%A8IO%E4%B9%8B%E5%89%8D%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">工具箱，但是黑盒（在IO之前）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%83%E7%A6%BB%E6%B1%87%E7%BC%96"><span class="toc-number">1.1.</span> <span class="toc-text">逃离汇编</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A0%E8%BD%BD%E5%86%85%E6%A0%B8%E6%96%87%E4%BB%B6"><span class="toc-number">1.1.1.</span> <span class="toc-text">加载内核文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E5%85%A5%E4%BF%9D%E6%8A%A4%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.1.2.</span> <span class="toc-text">进入保护模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E6%A0%B8%E6%8F%90%E5%8F%96%E4%B8%8E%E6%8E%A7%E5%88%B6%E7%A7%BB%E4%BA%A4"><span class="toc-number">1.1.3.</span> <span class="toc-text">内核提取与控制移交</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%9D%E6%8A%A4%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%BB%B6%E7%BB%AD"><span class="toc-number">1.1.4.</span> <span class="toc-text">保护模式的延续</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E5%8C%96%E7%BC%96%E8%AF%91%E4%B9%8B%E8%B7%AF"><span class="toc-number">1.2.</span> <span class="toc-text">自动化编译之路</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Makefile%E5%9F%BA%E7%A1%80"><span class="toc-number">1.2.1.</span> <span class="toc-text">Makefile基础</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A9%E6%88%91%E4%BB%AC%E7%9A%84%E9%A1%B9%E7%9B%AE%E8%B7%91%E8%B5%B7%E6%9D%A5"><span class="toc-number">1.2.2.</span> <span class="toc-text">让我们的项目跑起来</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E5%8A%A0%E8%87%AA%E5%8A%A8%E5%8C%96"><span class="toc-number">1.2.3.</span> <span class="toc-text">更加自动化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IO%E7%9A%84%E5%89%8D%E5%A5%8F"><span class="toc-number">1.3.</span> <span class="toc-text">IO的前奏</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E6%9D%83%E7%BA%A7%E7%9A%84%E9%99%90%E5%88%B6%E4%B8%8E%E8%B7%A8%E8%B6%8A"><span class="toc-number">1.3.1.</span> <span class="toc-text">特权级的限制与跨越</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#CPL%E3%80%81DPL%E3%80%81RPL"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">CPL、DPL、RPL</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%A8"><span class="toc-number">1.3.1.2.</span> <span class="toc-text">门</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A2%AB%E9%81%97%E5%BF%98%E7%9A%84%E5%A0%86%E6%A0%88"><span class="toc-number">1.3.1.3.</span> <span class="toc-text">被遗忘的堆栈</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#call%E5%92%8Cret%EF%BC%9Bret%E7%9A%84%E7%8B%AC%E8%B5%B0"><span class="toc-number">1.3.1.4.</span> <span class="toc-text">call和ret；ret的独走</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%E6%9C%BA%E5%88%B6%E7%9A%84%E5%BC%95%E5%85%A5"><span class="toc-number">1.3.2.</span> <span class="toc-text">中断机制的引入</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%E6%9C%BA%E5%88%B6%EF%BC%9A%E7%90%86%E8%AE%BA"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">中断机制：理论</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%E6%9C%BA%E5%88%B6%EF%BC%9A%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.3.2.2.</span> <span class="toc-text">中断机制：实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%B6%E9%92%9F%E4%B8%AD%E6%96%AD%E5%92%8C%E4%B8%AD%E6%96%AD%E5%B5%8C%E5%A5%97"><span class="toc-number">1.3.2.3.</span> <span class="toc-text">时钟中断和中断嵌套</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7%E7%AE%B1%EF%BC%8C%E4%BD%86%E6%98%AF%E9%BB%91%E7%9B%92%EF%BC%88IO%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">工具箱，但是黑盒（IO）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E6%AC%A1%E6%95%B2%E5%87%BB%E7%9A%84%E4%BF%A1%E6%81%AF%E9%87%8F"><span class="toc-number">2.1.</span> <span class="toc-text">一次敲击的信息量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5"><span class="toc-number">2.1.1.</span> <span class="toc-text">建立连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Make-Code%E4%B8%8EBreak-Code"><span class="toc-number">2.1.2.</span> <span class="toc-text">Make Code与Break Code</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%93%8D%E7%BA%B5%E6%98%BE%E5%AD%98"><span class="toc-number">2.2.</span> <span class="toc-text">操纵显存</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%BE%E7%A4%BA%E5%86%85%E5%AE%B9%E4%B8%8E%E6%98%BE%E7%A4%BA%E8%8C%83%E5%9B%B4"><span class="toc-number">2.2.1.</span> <span class="toc-text">显示内容与显示范围</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9ATTY%E7%9A%84%E6%9E%84%E5%BB%BA"><span class="toc-number">2.2.2.</span> <span class="toc-text">*多TTY的构建</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E7%94%A8%E4%BD%86%E6%AE%8B%E7%BC%BA"><span class="toc-number">2.3.</span> <span class="toc-text">有用但残缺</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A3%E5%BC%8F%E4%BF%AE%E6%94%B9"><span class="toc-number">3.</span> <span class="toc-text">正式修改</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E4%BB%AC%E6%9C%89%E4%BB%80%E4%B9%88"><span class="toc-number">3.1.</span> <span class="toc-text">我们有什么</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E4%BA%86%E4%BB%80%E4%B9%88"><span class="toc-number">3.1.1.</span> <span class="toc-text">实现了什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%8B%E5%A4%B4%E7%9A%84%E6%A1%86%E6%9E%B6"><span class="toc-number">3.1.2.</span> <span class="toc-text">手头的框架</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%88%E4%BB%8E%E6%B8%85%E5%B1%8F%E5%BC%80%E5%A7%8B"><span class="toc-number">3.2.</span> <span class="toc-text">先从清屏开始</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B6%88%E7%81%AD%E7%94%A8%E6%88%B7%E8%BF%9B%E7%A8%8B%E5%92%8C%E5%A4%9ATTY"><span class="toc-number">3.2.1.</span> <span class="toc-text">*消灭用户进程和多TTY</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B8%85%E5%B1%8F"><span class="toc-number">3.2.2.</span> <span class="toc-text">清屏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E7%9A%84%E7%81%BE%E9%9A%BE"><span class="toc-number">3.2.3.</span> <span class="toc-text">时间的灾难</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E6%AD%A5%E4%B8%80%E4%B8%AA%E8%84%9A%E5%8D%B0%EF%BC%8C%E4%BD%86%E6%98%AF%E9%80%9F%E9%80%9A"><span class="toc-number">3.3.</span> <span class="toc-text">一步一个脚印，但是速通</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%E9%80%9F%E9%80%9A"><span class="toc-number">3.3.1.</span> <span class="toc-text">基本功能速通</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E5%8A%9F%E8%83%BD%E9%80%9F%E9%80%9A"><span class="toc-number">3.3.2.</span> <span class="toc-text">查找功能速通</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%92%A4%E5%9B%9E%E5%8A%9F%E8%83%BD%E9%80%9F%E9%80%9A"><span class="toc-number">3.3.3.</span> <span class="toc-text">撤回功能速通</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#lab3%E9%97%AE%E7%AD%94%E6%95%B4%E7%90%86"><span class="toc-number">4.</span> <span class="toc-text">lab3问答整理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%EF%BC%88%E9%80%9A%E7%94%A8%EF%BC%89"><span class="toc-number">4.1.</span> <span class="toc-text">中断（通用）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%E7%B1%BB%E5%9E%8B%E7%A0%81"><span class="toc-number">4.1.1.</span> <span class="toc-text">中断类型码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-number">4.1.2.</span> <span class="toc-text">中断的分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-number">4.1.3.</span> <span class="toc-text">异常的分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%E4%B8%8E%E5%BC%82%E5%B8%B8%E7%9A%84%E5%BC%82%E5%90%8C"><span class="toc-number">4.1.4.</span> <span class="toc-text">中断与异常的异同</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E6%A8%A1%E5%BC%8F%E4%B8%8B%E7%9A%84%E4%B8%AD%E6%96%AD%E5%A4%84%E7%90%86"><span class="toc-number">4.2.</span> <span class="toc-text">实模式下的中断处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%E5%90%91%E9%87%8F%E4%B8%8E%E4%B8%AD%E6%96%AD%E5%90%91%E9%87%8F%E8%A1%A8"><span class="toc-number">4.2.1.</span> <span class="toc-text">中断向量与中断向量表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E6%A8%A1%E5%BC%8F%E4%B8%8B%E8%8E%B7%E5%8F%96%E4%B8%AD%E6%96%AD%E5%A4%84%E7%90%86%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%85%A5%E5%8F%A3"><span class="toc-number">4.2.2.</span> <span class="toc-text">实模式下获取中断处理程序的入口</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%9D%E6%8A%A4%E6%A8%A1%E5%BC%8F%E4%B8%8B%E7%9A%84%E4%B8%AD%E6%96%AD%E5%A4%84%E7%90%86"><span class="toc-number">4.3.</span> <span class="toc-text">保护模式下的中断处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%E6%8F%8F%E8%BF%B0%E7%AC%A6%E4%B8%8EIDT"><span class="toc-number">4.3.1.</span> <span class="toc-text">中断描述符与IDT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%9D%E6%8A%A4%E6%A8%A1%E5%BC%8F%E4%B8%8B%E8%8E%B7%E5%8F%96%E4%B8%AD%E6%96%AD%E5%A4%84%E7%90%86%E7%A8%8B%E5%BA%8F%E5%85%A5%E5%8F%A3"><span class="toc-number">4.3.2.</span> <span class="toc-text">保护模式下获取中断处理程序入口</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E6%A8%A1%E5%BC%8F%E5%92%8C%E4%BF%9D%E6%8A%A4%E6%A8%A1%E5%BC%8F%E4%B8%8B%E7%9A%84%E4%B8%AD%E6%96%AD%E5%A4%84%E7%90%86%E7%9A%84%E5%B7%AE%E5%88%AB"><span class="toc-number">4.4.</span> <span class="toc-text">实模式和保护模式下的中断处理的差别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-number">4.5.</span> <span class="toc-text">其他</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%94%AE%E7%9B%98%E7%BB%84%E5%90%88%E9%94%AE%E7%9A%84%E8%AF%86%E5%88%AB"><span class="toc-number">4.5.1.</span> <span class="toc-text">键盘组合键的识别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E6%80%81%E5%92%8C%E5%86%85%E6%A0%B8%E6%80%81%E7%9A%84%E7%89%B9%E6%9D%83%E7%BA%A7"><span class="toc-number">4.5.2.</span> <span class="toc-text">用户态和内核态的特权级</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/blogOfNoob.github.io/teawith/39322.html" title="一些手册的简单描述">一些手册的简单描述</a><time datetime="2023-05-31T15:29:17.000Z" title="Created 2023-05-31 23:29:17">2023-05-31</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/blogOfNoob.github.io/teawith/37800.html" title="secII淘金">secII淘金</a><time datetime="2023-05-30T15:42:27.000Z" title="Created 2023-05-30 23:42:27">2023-05-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/blogOfNoob.github.io/teawith/35878.html" title="OSLab4随笔">OSLab4随笔</a><time datetime="2023-05-22T15:14:32.000Z" title="Created 2023-05-22 23:14:32">2023-05-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/blogOfNoob.github.io/teawith/19536.html" title="OSLab3随笔">OSLab3随笔</a><time datetime="2023-05-07T07:43:33.000Z" title="Created 2023-05-07 15:43:33">2023-05-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/blogOfNoob.github.io/teawith/21438.html" title="nasm拾遗">nasm拾遗</a><time datetime="2023-04-03T15:17:01.000Z" title="Created 2023-04-03 23:17:01">2023-04-03</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/blogOfNoob.github.io/img/path.png')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Mad Hatter</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/blogOfNoob.github.io/js/utils.js"></script><script src="/blogOfNoob.github.io/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -43,17 +43,15 @@
     <link href="https://miceforrat.github.io/blogOfNoob.github.io/teawith/37800.html"/>
     <id>https://miceforrat.github.io/blogOfNoob.github.io/teawith/37800.html</id>
     <published>2023-05-30T15:42:27.000Z</published>
-    <updated>2023-05-31T15:30:48.740Z</updated>
+    <updated>2023-06-05T15:22:09.188Z</updated>
     
-    <content type="html"><![CDATA[<p><a id="chapter1">01-软件工程基础</a></p><p>软件定义的变化（这玩意应该不考吧）</p><p><strong>软件工程的定义</strong>：</p><p>[IEEE610.12-1990]  （1）The application of a systematic, disciplined, quantifiable approach  to the development, operation, and maintenance of software; that is,  the application of engineering to software.  （2）The study of approaches as in （1）</p><p>中文：</p><p>（1)应用系统的、规范的、可量化的方法，来开发、运行和维护软件，即将工程应用到<br>软件。<br>(2)对(1)中各种方法的研究。</p><p><a id="chapter2">02-软件工程的发展</a></p><p>软件工程的三个环境因素：现实问题、抽象软件实体（计算机科学）、虚拟计算机（硬件和系统软件）</p>]]></content>
+    <content type="html"><![CDATA[<p>对软工二这门课的书本和课件做一个回（预）顾（习）。</p><h3 id="01-软件工程基础"><a href="#01-软件工程基础" class="headerlink" title="01-软件工程基础"></a>01-软件工程基础</h3><p>软件定义的变化（这玩意应该不考吧）</p><p><strong>软件工程的定义</strong>：</p><p>[IEEE610.12-1990]  （1）The application of a systematic, disciplined, quantifiable approach  to the development, operation, and maintenance of software; that is,  the application of engineering to software.  （2）The study of approaches as in （1）</p><p>中文（书P4）：</p><p>（1)应用系统的、规范的、可量化的方法，来开发、运行和维护软件，即将工程应用到<br>软件。<br>(2)对(1)中各种方法的研究。</p><h3 id="02-软件工程的发展"><a href="#02-软件工程的发展" class="headerlink" title="02-软件工程的发展"></a>02-软件工程的发展</h3><p>软件工程的三个环境因素：现实问题、抽象软件实体（计算机科学）、虚拟计算机（硬件和系统软件）</p><h3 id="05-项目启动"><a href="#05-项目启动" class="headerlink" title="05-项目启动"></a>05-项目启动</h3><p><strong>团队</strong></p><p>主程序员团队、民主团队、开放团队</p><p><strong>软件质量保障</strong></p><p><strong>项目管理</strong></p><h3 id="06-需求基础"><a href="#06-需求基础" class="headerlink" title="06-需求基础"></a>06-需求基础</h3><p><strong>需求工程定义：</strong>需求工程是所有需求处理活动的总和，它收集信息、分析问题、整合观点、记录需求并验证其正确性，最终描述出软件被应用后与其环境互动形成的期望效应。</p><p>需求工程的主要任务（书P67）：</p><p>说明软件系统将被应用的环境及其目标，说明用来达到这些目标的软件功能，即要同时说明软件“需要做什么”和“为什么需要做”；</p><p>需求工程必须将目标和功能反映到软件系统当中，映射为可行的软件行为，并对软件行为进行准确的规格说明；</p><p>现实世界是不断变化的世界，因此需求工程还需要妥善处理目标和功能随着时间演化的变动情况。</p><p>需求工程的活动分为需求开发和需求管理两个部分。需求开发包括需求获取、需求分析、需求规格说明、需求验证，而需求管理是因需求工程的工程特性而存在的，目的是在需求开发之后，保证所确定的需求能在后续的项目活动中有效地发挥作用，保证各种活动的开展符合需求。</p><p><strong>需求</strong>：用户的一种期望，软件系统通过满足用户的期望来解决用户的问题。</p><p>需求的层次：业务需求，用户级需求，系统级需求</p><p>软件需求的分类：功能需求、性能需求、质量属性、对外接口、约束</p>]]></content>
     
     
       
       
-    <summary type="html">&lt;p&gt;&lt;a id=&quot;chapter1&quot;&gt;01-软件工程基础&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;软件定义的变化（这玩意应该不考吧）&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;软件工程的定义&lt;/strong&gt;：&lt;/p&gt;
-&lt;p&gt;[IEEE610.12-1990]  （1）The application of </summary>
+    <summary type="html">&lt;p&gt;对软工二这门课的书本和课件做一个回（预）顾（习）。&lt;/p&gt;
+&lt;h3 id=&quot;01-软件工程基础&quot;&gt;&lt;a href=&quot;#01-软件工程基础&quot; class=&quot;headerlink&quot; title=&quot;01-软件工程基础&quot;&gt;&lt;/a&gt;01-软件工程基础&lt;/h3&gt;&lt;p&gt;软件定义的变化（这</summary>
       
     
     
